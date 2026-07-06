@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les Productions Chapitre 2 | Production vidéo à Montréal</title>
+<meta name="description" content="Chapitre 2 est une boîte de production vidéo à Montréal. Pubs, communication corporate, motion design, événements et courts-documentaires : des histoires créées pour vos audiences.">
+<meta property="og:title" content="Les Productions Chapitre 2">
+<meta property="og:description" content="Des histoires aux émotions. De l'idée à l'engagement. Production vidéo à Montréal.">
+<meta property="og:image" content="https://www.chapitre2.ca/assets/images/hero-poster.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.chapitre2.ca/">
+<link rel="icon" href="/assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yellow:#FFC60B; --black:#0D0D0D; --ink:#1A1A1A; --paper:#FFFFFF;
+  --smoke:#F4F3EF; --teal:#45B5AB; --teal-deep:#2E8F86; --grey:#8B8B8B;
+  --maxw:1200px; --pad:clamp(20px,5vw,64px); --r:14px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.65;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:700;line-height:1.12}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--grey)}
+.eyebrow.yl{color:var(--yellow)}
+.bar{display:block;width:72px;height:6px;background:var(--yellow);margin-top:18px;transform-origin:left;transform:scaleX(.2);transition:transform 1s var(--ease)}
+.in .bar{transform:scaleX(1)}
+.btn{display:inline-block;background:var(--yellow);color:var(--black);font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:17px 34px;border:none;border-radius:4px;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,198,11,.35)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.8)}
+.btn.ghost:hover{border-color:var(--yellow);color:var(--yellow);box-shadow:none}
+em.hl{font-style:italic;font-weight:700;color:var(--yellow)}
+section{position:relative}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+/* ============ NAV ============ */
+nav{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);transition:background .4s,padding .4s,box-shadow .4s}
+nav.solid{background:rgba(13,13,13,.92);backdrop-filter:blur(10px);padding:12px var(--pad);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+nav .logo img{height:58px;width:auto;transition:height .4s}
+nav.solid .logo img{height:48px}
+nav ul{display:flex;align-items:center;gap:34px;list-style:none}
+nav ul a{color:#fff;font-size:12.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;position:relative;padding:4px 0}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+nav ul a:hover::after{transform:scaleX(1)}
+#langBtn{background:transparent;border:1.5px solid var(--yellow);color:var(--yellow);font:600 12px 'Poppins';letter-spacing:.15em;padding:7px 14px;border-radius:4px;cursor:pointer;transition:.3s}
+#langBtn:hover{background:var(--yellow);color:var(--black)}
+#burger{display:none;background:none;border:none;cursor:pointer;width:34px;height:26px;position:relative;z-index:90}
+#burger span{position:absolute;left:0;width:100%;height:3px;background:#fff;border-radius:2px;transition:.35s var(--ease)}
+#burger span:nth-child(1){top:0}#burger span:nth-child(2){top:11px}#burger span:nth-child(3){top:22px}
+body.menu-open #burger span:nth-child(1){top:11px;transform:rotate(45deg)}
+body.menu-open #burger span:nth-child(2){opacity:0}
+body.menu-open #burger span:nth-child(3){top:11px;transform:rotate(-45deg)}
+@media(max-width:860px){
+  #burger{display:block}
+  nav ul{position:fixed;inset:0;background:rgba(13,13,13,.97);flex-direction:column;justify-content:center;gap:38px;transform:translateY(-100%);transition:transform .5s var(--ease)}
+  body.menu-open nav ul{transform:none}
+  nav ul a{font-size:17px}
+}
+
+/* ============ HERO ============ */
+#hero{height:100svh;min-height:600px;display:flex;align-items:center;background:var(--black);overflow:hidden}
+#hero .media,#hero .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.55) 0%,rgba(13,13,13,.15) 40%,rgba(13,13,13,.7) 100%)}
+#hero .inner{position:relative;z-index:2;width:100%}
+.hero-words{min-height:2.3em;font-size:clamp(46px,9vw,118px);font-weight:800;color:#fff;line-height:1.02;letter-spacing:-.02em}
+.hero-words .w1{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)}
+.hero-words .w2{display:block;color:var(--yellow)}
+.hw{opacity:0;transform:translateY(24px);animation:hw 4.2s var(--ease) infinite}
+.hw.b{animation-delay:.15s}
+@keyframes hw{0%{opacity:0;transform:translateY(24px)}9%,78%{opacity:1;transform:none}88%,100%{opacity:0;transform:translateY(-18px)}}
+#hero .cta{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+#hero .play{display:inline-flex;align-items:center;gap:14px;color:#fff;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;background:none;border:none}
+#hero .play .ring{width:64px;height:64px;border-radius:50%;border:2px solid var(--yellow);display:grid;place-items:center;transition:.35s var(--ease)}
+#hero .play:hover .ring{background:var(--yellow)}
+#hero .play .ring svg{margin-left:4px;fill:var(--yellow);transition:.35s}
+#hero .play:hover .ring svg{fill:var(--black)}
+#hero .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:2px;height:56px;background:rgba(255,255,255,.25);overflow:hidden}
+#hero .scroll::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--yellow);animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{to{top:110%}}
+
+/* ============ MANIFESTO ============ */
+#manifesto{padding:clamp(90px,14vw,170px) 0;background:var(--paper)}
+#manifesto p{font-size:clamp(24px,3.6vw,44px);font-weight:400;line-height:1.4;max-width:1050px}
+#manifesto p+p{margin-top:1.4em}
+
+/* ============ WORK ============ */
+#work{background:#121212;color:#fff;padding:clamp(80px,10vw,130px) 0 110px}
+#work h2{font-size:clamp(34px,5vw,58px);font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+#work h2 .thin{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.7);font-weight:800}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:42px 0 46px}
+.chip{background:transparent;border:1.5px solid rgba(255,255,255,.25);color:#ddd;font:500 12.5px 'Poppins';letter-spacing:.06em;padding:9px 18px;border-radius:100px;cursor:pointer;transition:.3s}
+.chip:hover{border-color:var(--yellow);color:var(--yellow)}
+.chip.on{background:var(--yellow);border-color:var(--yellow);color:var(--black);font-weight:600}
+#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:980px){#grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){#grid{grid-template-columns:1fr}}
+.card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:#1c1c1c;aspect-ratio:16/10;isolation:isolate}
+.card.feat{grid-column:span 2;aspect-ratio:16/8.2}
+@media(max-width:620px){.card.feat{grid-column:span 1;aspect-ratio:16/10}}
+.card img.th,.card video.cl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .5s}
+.card video.cl{opacity:0}
+.card:hover img.th{transform:scale(1.06)}
+.card:hover video.cl{opacity:1}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.82));z-index:1}
+.card .meta{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;transform:translateY(6px);transition:transform .45s var(--ease)}
+.card:hover .meta{transform:none}
+.card .meta .cl-name{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--yellow)}
+.card .meta h3{font-size:clamp(17px,1.7vw,22px);font-weight:600;color:#fff;margin-top:5px;line-height:1.25}
+.card .meta .watch{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .45s}
+.card:hover .meta .watch{opacity:1}
+.card .meta .watch svg{fill:var(--yellow)}
+#moreWrap{text-align:center;margin-top:52px}
+
+/* ============ APPROCHE ============ */
+#approche-intro{padding:clamp(90px,12vw,150px) 0;background:var(--paper)}
+#approche-intro .eyebrow{color:var(--yellow);font-size:clamp(14px,1.6vw,19px);letter-spacing:.12em;font-weight:700}
+#approche-intro h2{font-size:clamp(26px,3.4vw,42px);font-weight:500;margin-top:16px;max-width:900px}
+#steps{background:var(--yellow);padding:clamp(70px,9vw,110px) 0}
+#steps .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(26px,3vw,44px)}
+@media(max-width:980px){#steps .cols{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){#steps .cols{grid-template-columns:1fr}}
+#steps .col{border-left:2px solid rgba(13,13,13,.25);padding-left:22px}
+#steps h3{font-size:19px;font-weight:700;color:var(--black);margin-bottom:14px}
+#steps p{font-size:14.5px;font-weight:400;color:#211a05}
+#steps p+p{margin-top:.9em}
+#listen{background:var(--black);color:#fff;text-align:center;padding:clamp(70px,9vw,100px) var(--pad)}
+#listen p{max-width:820px;margin:0 auto;font-size:clamp(16px,2vw,20px)}
+#listen p+p{margin-top:1em}
+#listen .btn{margin-top:38px}
+
+/* ============ CLIENTS / QUOTE ============ */
+#clients{background:var(--smoke);padding:clamp(70px,9vw,110px) 0}
+#clients h2{font-size:clamp(24px,3vw,34px);font-weight:800;text-transform:uppercase}
+#clients .sub{margin-top:14px;font-size:clamp(16px,2vw,21px);font-weight:400;max-width:960px}
+.logos{margin-top:56px;display:grid;grid-template-columns:repeat(5,1fr);gap:40px 48px;align-items:center}
+@media(max-width:860px){.logos{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.logos{grid-template-columns:repeat(2,1fr)}}
+.logos img{width:100%;max-width:150px;margin:0 auto;filter:grayscale(1);opacity:.65;transition:.35s}
+.logos img:hover{filter:none;opacity:1}
+#quote{padding:clamp(90px,12vw,150px) 0;background:var(--paper);text-align:center}
+#quote blockquote{max-width:760px;margin:0 auto;font-size:clamp(22px,3vw,34px);font-weight:400;line-height:1.45;position:relative}
+#quote blockquote::before{content:"“";position:absolute;top:-40px;left:-10px;font-size:110px;font-weight:800;color:var(--yellow);line-height:1}
+#quote .who{margin-top:36px;display:flex;align-items:center;justify-content:center;gap:16px}
+#quote .who img{width:74px;height:74px;border-radius:50%;object-fit:cover}
+#quote .who b{display:block;font-weight:600}
+#quote .who i{font-size:13px;color:var(--grey)}
+
+/* ============ ABOUT ============ */
+#about{background:var(--teal);padding:clamp(80px,11vw,140px) 0;color:#123b37}
+#about .row{display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(40px,6vw,90px);align-items:start}
+#about .row+.row{margin-top:clamp(80px,10vw,120px)}
+@media(max-width:860px){#about .row{grid-template-columns:1fr}}
+#about h2{font-size:clamp(30px,4vw,46px);font-weight:700;color:var(--black);text-transform:uppercase;line-height:1.15}
+#about p{font-size:16.5px;color:#0e2f2b}
+#about p+p{margin-top:1.1em}
+#about a{font-weight:700;font-style:italic;color:var(--paper)}
+#about a:hover{color:var(--yellow)}
+
+/* ============ BTS ============ */
+#bts{background:var(--black);color:#fff;padding:clamp(80px,10vw,130px) 0}
+#bts h2{font-size:clamp(28px,4vw,44px);font-weight:800}
+#bts .sub{color:var(--yellow);font-weight:600;font-style:italic;margin-top:8px}
+.collage{margin-top:54px;display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.collage .cell{border-radius:var(--r);overflow:hidden;position:relative}
+.collage .cell img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.collage .cell:hover img{transform:scale(1.05)}
+.c-a{grid-column:span 7;aspect-ratio:16/9;cursor:pointer}
+.c-b{grid-column:span 5;aspect-ratio:4/3.35}
+.c-c{grid-column:span 3;aspect-ratio:1/1.15}
+.c-d{grid-column:span 4;aspect-ratio:16/11}
+.c-e{grid-column:span 5;aspect-ratio:16/9.2}
+@media(max-width:720px){.c-a{grid-column:span 12}.c-b{grid-column:span 12;aspect-ratio:16/9}.c-c,.c-d{grid-column:span 6}.c-e{grid-column:span 12}}
+.c-a .playo{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.28);transition:.35s}
+.c-a:hover .playo{background:rgba(0,0,0,.05)}
+.c-a .playo .ring{width:78px;height:78px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.c-a .playo svg{fill:var(--black);margin-left:5px}
+
+/* ============ CONTACT ============ */
+#tease{padding:clamp(100px,14vw,170px) 0;background:var(--paper)}
+#tease h2{font-size:clamp(34px,5.4vw,64px);font-weight:400}
+#tease h2 b{display:block;font-weight:800;color:var(--yellow)}
+#contact{position:relative;color:#fff;padding:clamp(90px,11vw,140px) 0;overflow:hidden;background:var(--black)}
+#contact .bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+#contact::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.75),rgba(13,13,13,.55))}
+#contact .wrap{position:relative;z-index:2}
+#contact .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;align-items:flex-start;margin-bottom:60px}
+#contact h2{font-size:clamp(34px,4.6vw,54px);font-weight:300}
+#contact h2 b{font-weight:800}
+#contact .coords{border-left:4px solid var(--yellow);padding-left:20px;font-size:17px}
+#contact .coords b{font-size:20px}
+form .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px}
+@media(max-width:720px){form .cols{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fld label{font-size:13px;font-weight:500;letter-spacing:.06em}
+.fld input,.fld textarea{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.5);color:#fff;font:300 15px 'Poppins';padding:8px 2px;outline:none;transition:border-color .3s}
+.fld input:focus,.fld textarea:focus{border-color:var(--yellow)}
+.fld.full{grid-column:1/-1}
+.fld textarea{min-height:90px;resize:vertical}
+#contact .send{margin-top:24px;text-align:right}
+#sentMsg{display:none;margin-top:18px;color:var(--yellow);font-weight:600}
+footer{background:var(--yellow);padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer small{font-size:12.5px;font-weight:500;color:var(--black)}
+footer .soc{display:flex;gap:16px}
+footer .soc a{width:34px;height:34px;border-radius:50%;background:var(--black);display:grid;place-items:center;transition:transform .3s}
+footer .soc a:hover{transform:translateY(-3px)}
+footer .soc svg{fill:var(--yellow);width:15px;height:15px}
+
+/* ============ OVERLAYS ============ */
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(8,8,8,.97);display:none;overflow-y:auto;overscroll-behavior:contain}
+.ovl.open{display:block}
+body.locked{overflow:hidden}
+.ovl .close{position:fixed;top:18px;right:22px;z-index:5;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:rgba(0,0,0,.4);color:#fff;font-size:20px;cursor:pointer;transition:.3s}
+.ovl .close:hover{border-color:var(--yellow);color:var(--yellow);transform:rotate(90deg)}
+.ovl .navp{position:fixed;top:50%;transform:translateY(-50%);z-index:5;width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(0,0,0,.45);color:#fff;font-size:20px;cursor:pointer;transition:.3s}
+.ovl .navp:hover{border-color:var(--yellow);color:var(--yellow)}
+#prevP{left:16px}#nextP{right:16px}
+@media(max-width:720px){.ovl .navp{top:auto;bottom:18px;transform:none}}
+.ovl .inner{max-width:1060px;margin:0 auto;padding:90px var(--pad) 100px;color:#fff}
+.player{position:relative;aspect-ratio:16/9;background:#000;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ovl .pt{margin-top:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;border-bottom:4px solid var(--yellow);padding-bottom:18px}
+.ovl .pt h2{font-size:clamp(24px,3.4vw,38px);font-weight:700}
+.ovl .pt .cli{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--yellow)}
+.ovl .body{margin-top:30px;display:grid;grid-template-columns:1.7fr 1fr;gap:clamp(30px,5vw,70px)}
+@media(max-width:760px){.ovl .body{grid-template-columns:1fr}}
+.ovl .body h4{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--yellow);margin:22px 0 6px}
+.ovl .body h4:first-child{margin-top:0}
+.ovl .body p{font-size:15.5px;color:#d9d9d9}
+.ovl .tags{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.ovl .tags span{font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,.3);color:#bbb;border-radius:100px;padding:5px 13px}
+#reelOvl .inner,#btsOvl .inner{display:flex;min-height:100svh;align-items:center}
+#reelOvl .player,#btsOvl .player{width:100%}
+
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hw{animation:none;opacity:1;transform:none}
+  [data-plx]{transform:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#hero" aria-label="Chapitre 2">
+    <img src="/assets/logos/chapitre2-logo-reverse.png" alt="Chapitre 2 Productions">
+  </a>
+  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul id="menu">
+    <li><a href="#hero" data-i18n="nav_home"></a></li>
+    <li><a href="#work" data-i18n="nav_work"></a></li>
+    <li><a href="#approche-intro" data-i18n="nav_approach"></a></li>
+    <li><a href="#about" data-i18n="nav_about"></a></li>
+    <li><a href="#contact" data-i18n="nav_contact"></a></li>
+    <li><button id="langBtn">EN</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="media">
+    <video autoplay muted loop playsinline poster="/assets/images/hero-poster.jpg">
+      <source src="/assets/videos/hero-banner.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="inner wrap">
+    <div class="hero-words" data-plx="0.14" id="heroWords" aria-live="off"></div>
+    <div class="cta">
+      <button class="play" id="reelBtn">
+        <span class="ring"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span data-i18n="hero_reel"></span>
+      </button>
+      <a href="#work" class="btn ghost" data-i18n="hero_cta"></a>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true"></div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="wrap">
+    <p class="rv" data-i18n-html="man_1"></p>
+    <p class="rv d1" data-i18n-html="man_2"></p>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow yl rv" data-i18n="work_eyebrow"></span>
+    <h2 class="rv" style="margin-top:10px"><span class="thin" data-i18n="work_t1"></span> <span data-i18n="work_t2"></span><span class="bar"></span></h2>
+    <div class="filters rv d1" id="filters"></div>
+    <div id="grid"></div>
+    <div id="moreWrap"></div>
+  </div>
+</section>
+
+<!-- APPROCHE -->
+<section id="approche-intro">
+  <div class="wrap">
+    <p class="eyebrow rv" style="letter-spacing:.1em" data-i18n="app_eyebrow"></p>
+    <h2 class="rv d1" data-i18n="app_title"></h2>
+    <span class="bar rv d2" style="height:7px;width:110px"></span>
+  </div>
+</section>
+<section id="steps">
+  <div class="wrap cols">
+    <div class="col rv"><h3 data-i18n="s1t"></h3><p data-i18n-html="s1a"></p><p data-i18n="s1b"></p></div>
+    <div class="col rv d1"><h3 data-i18n="s2t"></h3><p data-i18n="s2a"></p><p data-i18n="s2b"></p></div>
+    <div class="col rv d2"><h3 data-i18n="s3t"></h3><p data-i18n="s3a"></p><p data-i18n="s3b"></p></div>
+    <div class="col rv d3"><h3 data-i18n="s4t"></h3><p data-i18n="s4a"></p><p data-i18n="s4b"></p></div>
+  </div>
+</section>
+<section id="listen">
+  <p class="rv" data-i18n="li_1"></p>
+  <p class="rv d1" data-i18n="li_2"></p>
+  <a href="#contact" class="btn rv d2" data-i18n="li_cta"></a>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="cl_title"></h2>
+    <p class="sub rv d1" data-i18n="cl_sub"></p>
+    <div class="logos rv d2">
+      <img loading="lazy" alt="Bell Media" src="/assets/logos/client-bell-media.png">
+      <img loading="lazy" alt="Cascades" src="/assets/logos/client-cascades.png">
+      <img loading="lazy" alt="EXFO" src="/assets/logos/client-exfo.png">
+      <img loading="lazy" alt="Stantec" src="/assets/logos/client-stantec.png">
+      <img loading="lazy" alt="Wirewerks" src="/assets/logos/client-wirewerks.png">
+      <img loading="lazy" alt="Move Home" src="/assets/logos/client-move-home.png">
+      <img loading="lazy" alt="Xbox" src="/assets/logos/client-xbox.png">
+      <img loading="lazy" alt="JCCM" src="/assets/logos/client-jccm.png">
+      <img loading="lazy" alt="1ère Avenue" src="/assets/logos/client-1ere-avenue.png">
+      <img loading="lazy" alt="MADI Photography" src="/assets/logos/client-madi-photography.png">
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <div class="wrap">
+    <blockquote class="rv" data-plx="0.06" data-i18n="q_text"></blockquote>
+    <div class="who rv d1">
+      <img loading="lazy" src="/assets/images/patrick-saad.png" alt="Patrick Saad">
+      <span><b>Patrick Saad</b><i data-i18n="q_role"></i></span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="row">
+      <div class="rv" data-plx="0.08"><h2 data-i18n-html="ab1_t"></h2><span class="bar"></span></div>
+      <div class="rv d1"><p data-i18n="ab1_p1"></p><p data-i18n="ab1_p2"></p></div>
+    </div>
+    <div class="row">
+      <div class="rv" data-plx="0.08"><h2 data-i18n-html="ab2_t"></h2><span class="bar"></span></div>
+      <div class="rv d1"><p data-i18n-html="ab2_p1"></p><p data-i18n="ab2_p2"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BTS -->
+<section id="bts">
+  <div class="wrap">
+    <h2 class="rv" data-i18n="bts_t"></h2>
+    <p class="sub rv d1" data-i18n="bts_sub"></p>
+    <div class="collage">
+      <div class="cell c-a rv" id="btsBtn" data-plx="0.05" role="button" tabindex="0" aria-label="Play">
+        <img id="btsImg" loading="lazy" alt="La réalisation selon Patrick">
+        <div class="playo"><span class="ring"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="cell c-b rv d1" data-plx="-0.05"><img loading="lazy" src="/assets/images/bts-wide.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-c rv" data-plx="0.07"><img loading="lazy" src="/assets/images/bts-vertical.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-d rv d1" data-plx="-0.04"><img loading="lazy" src="/assets/images/bts-middle-left.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-e rv d2" data-plx="0.06"><img loading="lazy" src="/assets/images/bts-middle-middle.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-d rv" data-plx="0.05"><img loading="lazy" src="/assets/images/bts-middle-right.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-e rv d1" data-plx="-0.06"><img loading="lazy" src="/assets/images/bts-top-right.jpg" alt="Behind the scenes"></div>
+      <div class="cell c-c rv d2" data-plx="0.04"><img loading="lazy" src="/assets/images/bts-bottom-right.jpg" alt="Behind the scenes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASE + CONTACT -->
+<section id="tease">
+  <div class="wrap">
+    <h2 class="rv" data-plx="0.08"><span data-i18n="te_1"></span><b data-i18n="te_2"></b></h2>
+  </div>
+</section>
+<section id="contact">
+  <video class="bgv" autoplay muted loop playsinline src="/assets/videos/contact-drone-mtl.mp4"></video>
+  <div class="wrap">
+    <div class="top">
+      <h2 class="rv"><span data-i18n="co_1"></span><br><b data-i18n="co_2"></b></h2>
+      <div class="coords rv d1">
+        <a href="mailto:info@chapitre2.ca">info@chapitre2.ca</a><br>
+        <b><a href="tel:+15145741804">514. 574. 1804</a></b>
+      </div>
+    </div>
+    <form class="rv d1" action="https://formsubmit.co/info@chapitre2.ca" method="POST">
+      <input type="hidden" name="_subject" value="Nouveau message — chapitre2.ca">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.chapitre2.ca/?sent=1#contact">
+      <div class="cols">
+        <div class="fld"><label for="f-name" data-i18n="f_name"></label><input id="f-name" name="nom" required autocomplete="name"></div>
+        <div class="fld"><label for="f-co" data-i18n="f_co"></label><input id="f-co" name="entreprise" autocomplete="organization"></div>
+        <div class="fld"><label for="f-web" data-i18n="f_web"></label><input id="f-web" name="site_web" autocomplete="url"></div>
+        <div class="fld"><label for="f-tel" data-i18n="f_tel"></label><input id="f-tel" name="telephone" autocomplete="tel"></div>
+        <div class="fld full"><label for="f-mail" data-i18n="f_mail"></label><input id="f-mail" type="email" name="courriel" required autocomplete="email"></div>
+        <div class="fld full"><label for="f-msg" data-i18n="f_msg"></label><textarea id="f-msg" name="message" required></textarea></div>
+      </div>
+      <div class="send"><button type="submit" class="btn" data-i18n="f_send"></button></div>
+      <p id="sentMsg" data-i18n="f_sent"></p>
+    </form>
+  </div>
+</section>
+<footer>
+  <small>© 2026 Les Productions Chapitre 2 inc.</small>
+  <div class="soc">
+    <a href="https://vimeo.com/fabulafilms" target="_blank" rel="noopener" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.48 4.807z"/></svg></a>
+    <a href="https://www.facebook.com/chapitre2productions" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.931-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></a>
+    <a href="https://www.linkedin.com/company/chapitre2productions/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452z"/></svg></a>
+    <a href="https://www.instagram.com/chapitre2productions/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+  </div>
+</footer>
+
+<!-- OVERLAYS -->
+<div class="ovl" id="projOvl" role="dialog" aria-modal="true">
+  <button class="close" aria-label="Fermer">✕</button>
+  <button class="navp" id="prevP" aria-label="Précédent">‹</button>
+  <button class="navp" id="nextP" aria-label="Suivant">›</button>
+  <div class="inner">
+    <div class="player" id="projPlayer"></div>
+    <div class="pt"><h2 id="pTitle"></h2><span class="cli" id="pClient"></span></div>
+    <div class="body">
+      <div>
+        <h4 data-i18n="p_mandate"></h4><p id="pMandate"></p>
+        <div id="pCtxWrap"><h4 data-i18n="p_context"></h4><p id="pContext"></p></div>
+      </div>
+      <div>
+        <h4 data-i18n="p_prod"></h4><p id="pProd"></p>
+        <h4 data-i18n="p_dir"></h4><p id="pDir"></p>
+        <div class="tags" id="pTags"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ovl" id="reelOvl" role="dialog" aria-modal="true"><button class="close" aria-label="Fermer">✕</button><div class="inner"><div class="player" id="reelPlayer"></div></div></div>
+<div class="ovl" id="btsOvl" role="dialog" aria-modal="true"><button class="close" aria-label="Fermer">✕</button><div class="inner"><div class="player" id="btsPlayer"></div></div></div>
+
+<script type="application/json" id="c2-content">{"projects":[{"slug":"phoenix-rising-the-river","cats":["music"],"client":"EnSoul Records","clientEn":"EnSoul Records","dir":"Miryam Charles, Danik Gollain Bartolini","prod":"EnSoul Records","v":{"t":"youtube","id":"V-u9FPOaOQo","h":null,"img":""},"fr":{"t":"Phoenix Rising & The River — Dominique Fils-Aimé","p":"Producteur exécutif et responsable de la production et de la postproduction de deux clips musicaux pour Dominique Fils-Aimé (2026, Montréal), réalisés par Miryam Charles et Danik Gollain Bartolini.","c":"Production et postproduction supervisées de bout en bout, avec livraison des deux projets dans un échéancier serré."},"en":{"t":"Phoenix Rising & The River — Dominique Fils-Aimé","p":"Executive producer and production & post-production lead for two music videos for Dominique Fils-Aimé (2026, Montreal), directed by Miryam Charles and Danik Gollain Bartolini.","c":"Oversaw production and post-production end to end, delivering both projects within a tight timeline."}},{"slug":"gabrielle-white-au-dela","cats":["doc","corpo"],"client":"Signé Laval","clientEn":"Signé Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"youtube","id":"7Y-6MAFeEmw","h":null,"img":""},"fr":{"t":"Gabrielle White — « Au-delà » (Cosmodôme)","p":"Production, réalisation et montage d'une capsule vidéo mettant en vedette l'artiste Gabrielle White et sa projection de mapping vidéo au Cosmodôme, dans le cadre de Signé Laval.","c":"Captation du processus créatif de l'artiste, traduit en un récit visuel cohérent, du tournage jusqu'à la postproduction."},"en":{"t":"Gabrielle White — “Au-delà” (Cosmodôme)","p":"Produced, directed and edited this video capsule featuring artist Gabrielle White and her video mapping projection at the Cosmodôme, as part of Signé Laval.","c":"Captured the creative process and translated it into a cohesive visual narrative, from filming through post-production."}},{"slug":"fatima-zohra-ouardani-maison-andre-benjamin-papineau","cats":["doc","corpo"],"client":"Signé Laval","clientEn":"Signé Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"youtube","id":"NXf_m1zUZYI","h":null,"img":""},"fr":{"t":"Fatima-Zohra Ouardani — Maison André-Benjamin-Papineau","p":"Production, réalisation et montage d'une capsule vidéo mettant en lumière l'artiste Fatima-Zohra Ouardani et son travail à la Maison André-Benjamin-Papineau, dans le cadre de Signé Laval.","c":""},"en":{"t":"Fatima-Zohra Ouardani — Maison André-Benjamin-Papineau","p":"Produced, directed and edited this video capsule highlighting artist Fatima-Zohra Ouardani and her work at the Maison André-Benjamin-Papineau, as part of Signé Laval.","c":""}},{"slug":"feuilles-dechirees-avant-que-la-derniere-feuille-ne-tombe","cats":["doc","corpo"],"client":"Signé Laval","clientEn":"Signé Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"youtube","id":"T3PzW5-USis","h":null,"img":""},"fr":{"t":"Feuilles déchirées — « Avant que la dernière feuille ne tombe »","p":"Production, réalisation et montage d'une capsule vidéo pour Signé Laval, mettant en vedette le collectif Feuilles déchirées.","c":""},"en":{"t":"Feuilles déchirées — “Avant que la dernière feuille ne tombe”","p":"Produced, directed and edited this video capsule for Signé Laval, featuring the collective Feuilles déchirées.","c":""}},{"slug":"dominique-fils-aime-moi-je-taime","cats":["music"],"client":"EnSoul Records","clientEn":"EnSoul Records","dir":"Miryam Charles","prod":"EnSoul Records","v":{"t":"youtube","id":"a0dZvSsvZdA","h":null,"img":""},"fr":{"t":"Dominique Fils-Aimé — « Moi Je t’Aime »","p":"Producteur et directeur de production du clip musical « Moi Je t'Aime » de Dominique Fils-Aimé (2024).","c":"Réalisation : Miryam Charles · Direction photo : Danik Gollain-Bartolini · 1er assistant caméra : Eloic Hamel · Opérateur steadicam : Hugo-Alexandre Coderre · Chef machiniste : Joseph Laplante · Chef éclairagiste : Lucas Wakman · Stylisme : Haji MaA · Maquillage : Claudine Jourdain · Coiffure : Wicelyne Paul · Producteur : Patrick Saad · Productrice exécutive : Miryam Charles · Superviseur de production : Patrick Saad · Assistants de production : Sammy Gélinas, Noah Leon · Photographe de plateau : Sabiha Merabet · Montage : Miryam Charles"},"en":{"t":"Dominique Fils-Aimé — “Moi Je t’Aime”","p":"Producer & production manager for Dominique Fils-Aimé's music video “Moi Je t'Aime” (2024).","c":"Director: Miryam Charles · Director of photography: Danik Gollain-Bartolini · First assistant camera: Eloic Hamel · Steadicam operator: Hugo-Alexandre Coderre · Key grip: Joseph Laplante · Key gaffer: Lucas Wakman · Stylist: Haji MaA · Make-up artist: Claudine Jourdain · Hairstylist: Wicelyne Paul · Producer: Patrick Saad · Executive producer: Miryam Charles · Production supervisor: Patrick Saad · Production assistants: Sammy Gélinas, Noah Leon · Still photographer: Sabiha Merabet · Editor: Miryam Charles"}},{"slug":"dominique-fils-aime-our-roots-run-deep","cats":["music"],"client":"EnSoul Records","clientEn":"EnSoul Records","dir":"Miryam Charles","prod":"EnSoul Records","v":{"t":"youtube","id":"IoarWFBk2lQ","h":null,"img":""},"fr":{"t":"Dominique Fils-Aimé — « Our Roots Run Deep » (vidéoclip officiel)","p":"Producteur et superviseur de production du vidéoclip officiel « Our Roots Run Deep » de Dominique Fils-Aimé.","c":"Réalisation : Miryam Charles · Direction photo : Danik Gollain-Bartolini · 1er assistant caméra : Jacob Monfils · Chef machiniste : Joseph Laplante · Chef éclairagiste : Lucas Wakman · Stylisme : Haji MaA · Maquillage : Sly Bien-Aimé · Coiffure : Wicelyne Paul · Producteur : Patrick Saad · Productrice exécutive : Miryam Charles · Superviseur de production : Patrick Saad · Assistants de production : Liz Bono, Sammy Gélinas · Figuration : Jessica Alunaya, Mel Charlot, Diane Gistal, Soleil Launière · Montage : Miryam Charles"},"en":{"t":"Dominique Fils-Aimé — “Our Roots Run Deep” (Official Video)","p":"Producer & production supervisor for Dominique Fils-Aimé's official music video “Our Roots Run Deep”.","c":"Director: Miryam Charles · Director of photography: Danik Gollain-Bartolini · First assistant camera: Jacob Monfils · Key grip: Joseph Laplante · Key gaffer: Lucas Wakman · Stylist: Haji MaA · Make-up artist: Sly Bien-Aimé · Hairstylist: Wicelyne Paul · Producer: Patrick Saad · Executive producer: Miryam Charles · Production supervisor: Patrick Saad · Production assistants: Liz Bono, Sammy Gélinas · Extras: Jessica Alunaya, Mel Charlot, Diane Gistal, Soleil Launière · Editor: Miryam Charles"}},{"slug":"netskope-p-dem-motion-design-explainers","cats":["motion","corpo"],"client":"Netskope","clientEn":"Netskope","dir":"Cédric Gavillet","prod":"Chapitre 2 Productions","v":{"t":"ext","id":"","h":null,"img":"/assets/images/netskope-pdem.jpg","url":"https://www.netskope.com/resources/demos-and-videos/netskope-one-dem-regain-visibility-to-master-and-secure-digital-experience"},"fr":{"t":"Netskope P-DEM — Vidéos explicatives en motion design","p":"Coproducteur et superviseur de postproduction d'une série de 4 vidéos explicatives en motion design de 35 secondes (2024). Réalisation : Cédric Gavillet · Coproducteur : Dan Libman.","c":"Gestion de la postproduction à distance avec un client basé aux États-Unis."},"en":{"t":"Netskope P-DEM — Motion Design Explainer Videos","p":"Co-producer & post-production supervisor for a series of 4 x 35-second motion design explainer videos (2024). Director: Cédric Gavillet · Co-producer: Dan Libman.","c":"Managed post-production remotely with a U.S.-based client."}},{"slug":"ordinaire-de-nature","cats":["corpo","events"],"client":"Culture Laval","clientEn":"Culture Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"589869378","h":"3395550263","img":"https://i.vimeocdn.com/video/1219863052_1280"},"fr":{"t":"Ordinaire de nature","p":"Culture Laval a mandaté Chapitre 2 pour le tournage et le montage d'une capsule vidéo pour promouvoir une exposition d'une pièce d'art numérique placée dans des lieux extérieurs à Laval.","c":"« Ordinaire de nature » est un projet retenu par le Pôle lavallois d'enseignement supérieur en arts numériques et économie créative (PLAN) dans le cadre de son appel à projets 2021-2022. Le Collège Lionel-Groulx et l'Université de Montréal s'associent au studio de design et de création Boume à Laval pour ce projet qui combine environnement, transition écologique, conceptualisation et réalisation d'œuvres numériques dans quatre lieux lavallois."},"en":{"t":"Ordinaire de Nature","p":"Culture Laval mandated Chapitre 2 to shoot and edit a video to promote an a digital art exhibition located in 4 outdoor areas in the city of Laval.","c":"\"Ordinaire de nature\" is a project selected by le Pôle lavallois d’enseignement supérieur en arts numériques et économie créative (PLAN) as part of its 2021-2022 call for projects. The Lionel-Groulx College and the University of Montreal are teaming up with Boume Studio in Laval for this project that combines environment, ecological transition, conceptualization and production of digital works in four Laval locations."}},{"slug":"nova-video-explainer","cats":["corpo","motion","training"],"client":"EXFO","clientEn":"EXFO","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"634673062","h":"e290a614d2","img":"https://i.vimeocdn.com/video/1277016915-190cd6b965a9a13e00b01bb0a2f45566152ddbab7e2b6dff3_1280"},"fr":{"t":"NOVA Vidéo explicative","p":"EXFO a mandaté Chapitre 2 pour la conception et réalisation d'une vidéo explicative en motion design pour sa solution NOVA.","c":"En utilisant un mélange d'approches figuratives et symboliques, nous présentons une innovation révolutionnaire : l'assurance de service automatisée 5G de EXFO."},"en":{"t":"NOVA Video explainer","p":"EXFO mandated Chapitre 2 to create a storytelling concept and create a motion design video explainer for their NOVA solution.","c":"Using a mix of figurative and symbolic approaches we showcase breakthrough innovation using EXFO's 5G automated service assurance."}},{"slug":"on-the-lookout-of-a-buried-church-in-sainte-rose","cats":["corpo","events","doc"],"client":"Culture Laval","clientEn":"Culture Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"656606703","h":"e2408f1772","img":"https://i.vimeocdn.com/video/1325573852-554c8b3558ad66715a4aa774daa43c937bb2810f86a3f256b59a29bda20a47b5-d_1280"},"fr":{"t":"Sur les traces d'une église enfouie à Sainte-Rose","p":"Culture Laval a mandaté Chapitre 2 pour réaliser une vidéo mettant en valeur les découvertes archéologiques situées à Sainte-Rose, Laval.","c":"Pour la deuxième année consécutive, des fouilles archéologiques ont été menées sur le site de l'église Sainte-Rose-de-Lima, dans le secteur de la berge des Baigneurs, à l'été 2021. Dans cet ancien noyau villageois du quartier Sainte-Rose, les archéologues ont mis à jour les fondations d'une église édifiée en 1788. Devenue trop exigüe pour les besoins des fidèles et trop coûteuse à entretenir, celle-ci fut démolie pour laisser place à l'église Sainte-Rose-de-Lima érigée juste à côté en 1857. Lors des fouilles, les archéologues ont aussi découvert un charnier, ainsi que des artefacts qui nous renseignent sur les habitudes de vie des paroissiens à cette époque."},"en":{"t":"On the lookout for a buried church in Sainte-Rose","p":"Culture Laval mandated Chapitre 2 to film and edit a video to showcase the archeological finds located in Sainte-Rose, Laval.","c":"For the second year in a row, archaeological excavations were carried out on the site of the Sainte-Rose-de-Lima church, in the Berge des Baigneurs sector, in the summer of 2021. In this old village of the Sainte-Rose district, archaeologists have updated the foundations of a church built in 1788. Having become too cramped for the needs of the faithful and too expensive to maintain, it was demolished to make way for the Sainte-Rose-de-Lima church erected next door in 1857. During the excavations, the archaeologists also discovered a mass grave, as well as artefacts which inform us about the habits of life of the parishioners at that time. All of these discoveries are documented, preserved and showcased by the City of Laval in order to keep track of the history of Vieux Sainte-Rose."}},{"slug":"signe-laval-celebrates-its-3-years","cats":["corpo","motion","events"],"client":"Culture Laval","clientEn":"Culture Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"642798419","h":"97daf2fd10","img":"https://i.vimeocdn.com/video/1325583607-143734058c71fd4295a1d710824e0571fc22ddefbc849790ddc85f07df44dda9-d_1280"},"fr":{"t":"Signé Laval fête ses 3 ans","p":"Culture Laval a mandaté Chapitre 2 pour créer une vidéo en motion design et pour rassembler les points forts de son portfolio pour célébrer ses 3 ans depuis son lancement.","c":"Depuis novembre 2018, Signé Laval est votre guide culturel lavallois à travers un magazine, un répertoire culturel, un calendrier, et une présentation des quartiers de la ville réunis sur une même plateforme."},"en":{"t":"Signé Laval celebrates its 3 years","p":"Culture Laval mandated Chapitre 2 to create a motion graphics video and put together highlights from its video portfolio to celebrate its 3 year anniversary since launch.","c":"Since November 2018, Signé Laval has been your Laval cultural guide through a magazine, a cultural directory, a calendar, and a presentation of the city's neighborhoods gathered on a single platform. Through this dynamic capsule, discover an overview of our videos that take you to the heart of creation, to the discovery of heritage and cultural news."}},{"slug":"the-history-of-the-lachapelle-bridge-from-one-bank-to-the-other","cats":["corpo","doc"],"client":"Culture Laval","clientEn":"Culture Laval","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"699185449","h":"887cf47bad","img":"https://i.vimeocdn.com/video/1433735686-8f75dd91986b796352024a2adadb6b873420c71646834841b9a0442bde72496b-d_1280"},"fr":{"t":"L'histoire du pont Lachapelle : d'une rive à l'autre","p":"Culture Laval a mandaté Chapitre 2 pour filmer et faire le montage d'une capsule vidéo qui raconte l'histoire de la construction du premier pont de la province et son rôle dans la révolte des patriotes ainsi que dans la transition de l'économie de la ville à travers le temps.","c":"Depuis 1801, les Lavallois traversent la rivière des Prairies pour se rendre de l'Abord-à-Plouffe (aujourd'hui Chomedey) à Saint-Laurent (aujourd'hui Cartierville). La première traverse a été construite en 1801 et remplacée en 1829 par une traverse à manège. Le premier pont de Cartierville, un pont de bois inauguré en 1836, est reconnu comme le plus vieux pont de Montréal et a été le théâtre d'un acte de la révolte des patriotes de 1837. Remplacé par un pont de métal en 1880, modernisé en 1930, puis doublé en 1976."},"en":{"t":"The history of the Lachapelle bridge: from one bank to the other","p":"Culture Laval mandated Chapitre 2 to film and edit a video to tell the story of the construction of the first bridge in the province and it's role in the revolt of the patriots as well as its role in the transition for the economy of the city over time.","c":"Since 1801, Laval residents have crossed the Rivière des Prairies to get from L’Abord-à-Plouffe (today Chomedey) to Saint-Laurent (today Cartierville). At the time, the purchase of cereals at various mills justified these trips. The first crossing was built in 1801 at the request of the inhabitants of Île Jésus and it was replaced in 1829 by a carousel traverse. This crossing ended its operations during the construction of the first Cartierville bridge, a wooden bridge inaugurated in 1836. It is recognized as the oldest bridge in Montreal."}},{"slug":"marie-josee-bergeron-je-suis-artiste-visuelle","cats":["doc"],"client":"Atelier MJB","clientEn":"Atelier MJB","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"297188340","h":null,"img":"https://i.vimeocdn.com/video/735069787_1280.jpg"},"fr":{"t":"Marie-Josée Bergeron – Je suis artiste visuelle","p":"Tournage et montage d'un court-documentaire de l'artiste peintre Marie-Josée Bergeron dans son atelier.","c":"« Créer, c'est exister. » Marie-Josée Bergeron raconte son histoire et ce qui l'a amenée à faire de l'art."},"en":{"t":"Marie-Josée Bergeron - Je suis artiste visuelle","p":"Atelier MJB mandated Chapitre 2 in documenting Marie-Josée's art form and interviewing her at her home and studio in order to tell her story and what led her to create art.","c":"\"To create is to exist\" A short documentary on how art saved this artist's life."}},{"slug":"nour-private-wealth-x-tlff","cats":["corpo","events","stock"],"client":"Nour Private Wealth","clientEn":"Nour Private Wealth","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"359210397","h":null,"img":"https://i.vimeocdn.com/video/813504356_1280.jpg"},"fr":{"t":"Nour Private Wealth x TLFF","p":"NPW a mandaté Chapitre 2 pour conceptualiser et faire le montage d'une vidéo pour mettre en valeur la communauté cinématographique libanaise avec l'utilisation d'images d'archives et d'une voix off.","c":"NPW a contribué au soutien du Festival du film libanais de Toronto en faisant un don à la communauté cinématographique libanaise et en diffusant un message d'accessibilité à tous."},"en":{"t":"Nour Private Wealth x TLFF","p":"Nour Private Wealth mandated Chapitre 2 in delivering a message to the Lebanese film community that showcase their values and beliefs using a combination of stock footage, voice over.","c":"Nour Private Wealth contributed to the support of the Toronto Lebanese Film Festival by donating to this film community and by bringing together this community by delivering a message of accessibility to all."}},{"slug":"the-audition","cats":["web"],"client":"Mister Fantastic","clientEn":"Mister Fantastic","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"683877582","h":"093cd0fc32","img":"https://i.vimeocdn.com/video/1386336030-4939f494e0b1e532343637eedcd94e41f124007da526853dd8ea47cf218f8968-d_1280"},"fr":{"t":"The Audition","p":"Mister Fantastic a mandaté Chapitre 2 pour réaliser et monter un épisode de sa websérie.","c":"Charles se retrouve embarqué dans un scénario de jeu de rôle particulier avec Valeria, une artiste qui a un rêve, mais pas celui qu'il attendait…"},"en":{"t":"The Audition","p":"Mister Fantastic mandated Chapitre 2 to direct and edit an episode of its series.","c":"Charles get's roped into a particular role play scenario with Valeria, an artist with a dream, but not the kind he was expecting..."}},{"slug":"district-961-grand-opening","cats":["corpo","events"],"client":"District 961","clientEn":"District 961","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"346207370","h":null,"img":"https://i.vimeocdn.com/video/797343038_1280.jpg"},"fr":{"t":"District 961 – Célébration du 1er anniversaire","p":"District 961 a mandaté Chapitre 2 pour le tournage et le montage d'un événement promotionnel pour leurs clients.","c":"District 961, un resto-lounge haut de gamme spécialisé en cuisine fusion du Moyen-Orient, célèbre son premier anniversaire."},"en":{"t":"District 961 Grand Opening","p":"District 961 mandated Chapitre 2 in filming and editing a highlight of their 1 year anniversary event along with showcasing some of its cuisine.","c":"District 961, an upscale Resto-Lounge specialized in international offerings twisted with a middle eastern fusion is celebrating its 1 year anniversary."}},{"slug":"stantecs-involvment-in-the-community","cats":["corpo","events"],"client":"Stantec","clientEn":"Stantec","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"272655263","h":null,"img":"https://i.vimeocdn.com/video/704261008_1280.jpg"},"fr":{"t":"Stantec dans la communauté","p":"Stantec a mandaté Chapitre 2 pour le tournage et le montage d'entrevues et des coulisses d'un projet communautaire que l'entreprise québécoise a développé en 10 heures.","c":"L'équipe de Stantec Québec raconte comment l'innovation et la créativité sont au cœur de son engagement envers ses clients et sa communauté."},"en":{"t":"Stantec's involvment in the Community","p":"Stantec mandated Chapitre 2 in filming and editing interviews and the behind the scenes of a community project the Quebec team developed over the course of 10 hours.","c":"The Stantec Quebec team talks about how innovation and creativity are at the heart of its commitment to its clients and its community."}},{"slug":"its-ok-to-be-you","cats":["events","doc","stock"],"client":"Coach Layal","clientEn":"Coach Layal","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"429423970","h":null,"img":"https://i.vimeocdn.com/video/909924629_1280.jpg"},"fr":{"t":"It's OK to Be You","p":"Coach Layal a mandaté Chapitre 2 pour le tournage et le montage de sa présentation à des étudiants qui représente ses défis personnels et ses réalisations.","c":"Layal est une survivante du cancer du sein, mais ses défis dans la vie ne s'arrêtent pas là. Elle a fait face à une bataille acharnée avec l'acceptation des autres, ce qui l'a amenée à devenir ce qu'elle est : Coach Layal."},"en":{"t":"It's OK to Be You","p":"Coach Layal mandated Chapitre 2 to film her presentation to students and to showcase her personal challenges and achievements.","c":"Layal is a breast cancer survivor but her challenges in life didn't stop there. She faced an uphill battle with acceptance from others which led her to become who she is: Coach Layal."}},{"slug":"la-grande-rencontre-des-entrepreneurs-de-montreal","cats":["events"],"client":"La Jeune Chambre de Commerce de Montréal","clientEn":"La Jeune Chambre de Commerce de Montréal","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"170675068","h":null,"img":"https://i.vimeocdn.com/video/738879210_1280.jpg"},"fr":{"t":"La Grande Rencontre des Entrepreneurs de Montréal","p":"La Jeune Chambre de Commerce de Montréal a mandaté Chapitre 2 pour la captation et le montage d'un événement et des entrevues d'une de leurs conférences afin de transmettre un message aux jeunes entrepreneurs.","c":"La JCCM a tenu son prestigieux événement « La Grande Rencontre des Entrepreneurs de Montréal », qui a mis en lumière des conseils notables d'entrepreneurs de Montréal."},"en":{"t":"La Grande Rencontre des Entrepreneurs de Montréal","p":"La Jeune Chambre de Commerce de Montréal mandated Chapitre 2 to capture and highlight the 2016 conference in order to deliver a message to young entrepreneurs from some of the most sucessful business men and women from Montreal.","c":"The JCCM held their prestigious event La Grande Rencontre des Entrepreneurs de Montréal which highlighted some notable advice from very successful entrepreneurs from Montreal."}},{"slug":"lebanese-hockey-association","cats":["corpo","motion","events"],"client":"Association de hockey libanaise","clientEn":"Lebanese Hockey Association","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"249027380","h":null,"img":"https://i.vimeocdn.com/video/674722519_1280.jpg"},"fr":{"t":"Association de hockey libanaise","p":"L'Association libanaise de hockey a mandaté Chapitre 2 pour le tournage et le montage d'un match de hockey afin de créer une vidéo promotionnelle de l'association.","c":"L'objectif de la AHL était de promouvoir la communauté du hockey libanaise à Montréal et son succès auprès d'investisseurs potentiels."},"en":{"t":"Lebanese Hockey Association","p":"The Lebanese Hockey Association mandated Chapitre 2 to film a hockey match and edit together a promotional video for the hockey team.","c":"The goal was to promote the Lebanese hockey community in Montreal and to promote their success to potential investors."}},{"slug":"wirewerks-ft-tools-product-installation","cats":["corpo","training"],"client":"Wirewerks","clientEn":"Wirewerks","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"272653387","h":"7a6ebdd34b","img":"https://i.vimeocdn.com/video/704258992_1280.jpg"},"fr":{"t":"Vidéo d'installation des produits Wirewerks FT Tools","p":"Wirewerks a mandaté Chapitre 2 pour le tournage et le montage d'une série de vidéos d'installation de produits.","c":"Wirewerks met en valeur le processus d'installation de ses produits tout en montrant la simplicité et l'efficacité du processus."},"en":{"t":"Wirewerks FT Tools product installation","p":"Wirewerks mandated Chapitre 2 to film and edit together a series of product installation videos.","c":"Wirewerks was looking to showcase the installation process of their products while showing the simplicity and effectiveness of the process."}},{"slug":"meal-prep-montreal","cats":["corpo"],"client":"Meal Prep Montreal","clientEn":"Meal Prep Montreal","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"478553161","h":"32d436ea6e","img":"https://i.vimeocdn.com/video/993608765_960.jpg"},"fr":{"t":"Meal Prep Montreal","p":"Meal Prep Montreal et le chef Anthony Nakhlé ont mandaté Chapitre 2 pour le tournage et le montage d'une vidéo promotionnelle pour la petite entreprise.","c":"Un aperçu des coulisses de ce qui se passe dans la cuisine du chef Anthony Nakhlé et de ses valeurs humaines."},"en":{"t":"Meal Prep Montreal","p":"Meal Prep Montreal and Chef Anthony Nakhlé mandated Chapitre 2 to give a behind the scenes look at what happens in the kitchen and also to showcase what it takes to offer healthy meals with a lebanese twist.","c":"A behind-the-scenes look at what goes on in Chef Anthony Nakhlé's kitchen and his human values."}},{"slug":"the-survey","cats":["web"],"client":"Mister Fantastic","clientEn":"Mister Fantastic","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"335911401","h":null,"img":"https://i.vimeocdn.com/video/790214705_1280.jpg"},"fr":{"t":"The Survey","p":"Mister Fantastic a mandaté Chapitre 2 pour la réalisation, le tournage et le montage d'un épisode de sa série web.","c":"Sélectionné pour faire partie du Los Angeles Comedy Film Festival, The Survey raconte l'histoire réelle de Charles Daghlian."},"en":{"t":"The Survey","p":"Mister Fantastic mandated Chapitre 2 to direct and edit an episode of its web series.","c":"Selected to be part of the Los Angeles Comedy Film Festival, The Survey tells the real life story of Charles Daghlian."}},{"slug":"agnus-dei-cirque-du-soleil-volta","cats":["corpo","events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"238564087","h":null,"img":"https://i.vimeocdn.com/video/661665044_1280.jpg"},"fr":{"t":"Agnus Dei | Cirque du Soleil (Volta)","p":"LUVE FILMS a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour l'événement VIP organisé par le Cirque du Soleil et Agnus Dei.","c":""},"en":{"t":"Agnus Dei | Cirque du soleil (Volta)","p":"LUVE FILMS mandated Chapitre 2 to be DOP and camera operator for the VIP event hosted by Cirque du Soleil and Agnus Dei","c":""}},{"slug":"courto","cats":["corpo","motion"],"client":"Move Home Module","clientEn":"Move Home Module","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"484195640","h":null,"img":"https://i.vimeocdn.com/video/1003105226_1280.jpg"},"fr":{"t":"Courto","p":"Move Home a mandaté Chapitre 2 et Gavillet! pour créer une vidéo promotionnelle pour son système modulaire innovant.","c":"Move Home offre des solutions innovantes et flexibles pour maximiser le potentiel des espaces résidentiels et commerciaux. Il faut le voir pour le croire."},"en":{"t":"Courto","p":"Move Home Module mandated Chapitre 2 and Gavillet! to create a promotional video for their innovative modular system.","c":"Move Home offers innovative and flexible solutions to maximize the potential of residential and commercial spaces. You have to see it to believe it."}},{"slug":"76-olympic-games-commemoration-montreal","cats":["corpo","events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"175860160","h":null,"img":"https://i.vimeocdn.com/video/635052974_1280.jpg"},"fr":{"t":"Commémoration des Jeux olympiques de 76 (Montréal)","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour la commémoration des Jeux olympiques de 1976.","c":""},"en":{"t":"76 Olympic Games Commemoration (Montreal)","p":"LUVE FILMS mandated Chapitre 2 to be camera operator for the 76 Olympic Games Commemoration","c":""}},{"slug":"lune-rouge-guy-laliberte-press-conference","cats":["corpo","events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"208512433","h":null,"img":"https://i.vimeocdn.com/video/623847211_1280.jpg"},"fr":{"t":"Lune Rouge (Guy Laliberté) | Conférence de presse","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour la conférence de presse de Lune Rouge.","c":""},"en":{"t":"Lune Rouge (Guy Laliberté) | Press Conference","p":"LUVE FILMS mandated Chapitre 2 to be camera operator for the Lune Rouge press conference","c":""}},{"slug":"nintendo-labo-montreal-french","cats":["corpo","events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"307990208","h":null,"img":"https://i.vimeocdn.com/video/748067594_1280.jpg"},"fr":{"t":"Nintendo LABO Montréal (français)","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour un événement Nintendo LABO à Montréal.","c":""},"en":{"t":"Nintendo LABO Montreal (French)","p":"LUVE FILMS mandated Chapitre 2 to be camera operator for a Nintendo LABO event in Montreal","c":""}},{"slug":"follow-my-lead-gone-deville","cats":["events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"284958382","h":null,"img":"https://i.vimeocdn.com/video/719522207_1280.jpg"},"fr":{"t":"Follow My Lead – Gone DeVille","p":"LUVE FILMS a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour un clip vidéo pour Ania Jamila.","c":""},"en":{"t":"Follow My Lead - Gone DeVille","p":"LUVE FILMS mandated Chapitre 2 to be DOP and camera operator for a music video for Ania Jamila","c":""}},{"slug":"cogeco-fm-93","cats":["corpo"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"256882488","h":null,"img":"https://i.vimeocdn.com/video/684665410_1280.jpg"},"fr":{"t":"Cogeco – FM 93","p":"LUVE FILMS a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour une vidéo promotionnelle pour Cogeco FM 93.","c":""},"en":{"t":"Cogeco - FM 93","p":"LUVE FILMS mandated Chapitre 2 to be DOP and camera operator for a promotional video for Cogeco FM 93","c":""}},{"slug":"andreanne-co-fondation-des-etoiles","cats":["events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"230031723","h":null,"img":"https://i.vimeocdn.com/video/650497613_1280.jpg"},"fr":{"t":"Andréanne & Co | Fondation des étoiles","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour la Fondation des étoiles, présentée par Andréanne & Co.","c":""},"en":{"t":"Andréanne & Co | Fondation des étoiles","p":"LUVE FILMS mandated Chapitre 2 to be camera operator for the Fondation des etoiles hosted by Andréanne & Co","c":""}},{"slug":"f1-party-brunch-montreal-auberge-st-gabriel","cats":["corpo","events"],"client":"LUVE FILMS","clientEn":"LUVE FILMS","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"170387606","h":null,"img":"https://i.vimeocdn.com/video/575436709_1280.jpg"},"fr":{"t":"Fête F1 (brunch) | Montréal (Auberge St-Gabriel)","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour la fête F1 à l'Auberge St-Gabriel à Montréal.","c":""},"en":{"t":"F1 Party (Brunch) | Montreal (Auberge St-Gabriel)","p":"LUVE FILMS a mandaté Chapitre 2 comme caméraman pour la Party F1 à l'Auberge St-Gabriel à Montréal","c":""}},{"slug":"tout-doucement-feist-cover-by-ania-jamila","cats":["events"],"client":"Ania Jamila","clientEn":"Ania Jamila","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"148461765","h":null,"img":"https://i.vimeocdn.com/video/547410111_1280.jpg"},"fr":{"t":"Tout doucement, Feist (reprise par Ania Jamila)","p":"Ania Jamila a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour une prestation musicale.","c":""},"en":{"t":"Tout doucement, Feist (Cover by Ania Jamila)","p":"Ania Jamila mandated Chapitre 2 to be DOP and camera operator for a cover performance for La Voix IV.","c":""}},{"slug":"no-diggity-cover-by-ania-jamila-la-voix-iv","cats":["events"],"client":"Ania Jamila","clientEn":"Ania Jamila","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"youtube","id":"nNamrAY2BYk","h":null,"img":"https://i.ytimg.com/vi/nNamrAY2BYk/hqdefault.jpg"},"fr":{"t":"No Diggity (reprise par Ania Jamila) | La Voix IV","p":"Ania Jamila a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour une prestation à La Voix IV.","c":""},"en":{"t":"No Diggity (Cover by Ania Jamila) | La Voix IV","p":"Ania Jamila mandated Chapitre 2 to be DOP and camera operator for a cover performance for La Voix IV.","c":""}},{"slug":"back-to-black-cover-by-ania-jamila-la-voix-iv","cats":["events"],"client":"Ania Jamila","clientEn":"Ania Jamila","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"youtube","id":"-PhRnEirlC4","h":null,"img":"https://i.ytimg.com/vi/-PhRnEirlC4/hqdefault.jpg"},"fr":{"t":"Back To Black (reprise par Ania Jamila) | La Voix IV","p":"Ania Jamila a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour une prestation à La Voix IV.","c":""},"en":{"t":"Back To Black (Cover by Ania Jamila) | La Voix IV","p":"Ania Jamila mandated Chapitre 2 to be DOP and camera operator for a cover performance for La Voix IV.","c":""}},{"slug":"kinova-gen3-robotic-arm-product-teaser","cats":["corpo","motion"],"client":"Kinova","clientEn":"Kinova","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"291165017","h":null,"img":"https://i.vimeocdn.com/video/727929796_1280.jpg"},"fr":{"t":"Bande-annonce du bras robotique Kinova GEN3","p":"Kinova a mandaté Chapitre 2 pour le tournage et le montage d'une série de 4 vidéos promotionnelles du bras robotique Gen 3, en décrivant certaines de ses principales caractéristiques.","c":"Dans le cadre de l'un de ses lancements de produits, Kinova présente ses fonctionnalités adaptables, flexibles et évolutives en mettant en vedette le bras robotique en mouvement."},"en":{"t":"Kinova GEN3 Robotic Arm Product Teaser","p":"Kinova mandated Chapitre 2 in filming and editing a series of 4 videos introducing Kinova’s Gen 3 robotic arm in use, outlining some if its key features.","c":"As part of one of their product launches, Kinova showcases its adaptable, flexible and Scalable features by featuring the robotic arm in motion performing a sequence of movements and actions."}},{"slug":"oh-so-quiet-bjork-cover-by-ania-jamila","cats":["events"],"client":"Ania Jamila","clientEn":"Ania Jamila","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"148446433","h":null,"img":"https://i.vimeocdn.com/video/547391898_1280.jpg"},"fr":{"t":"Oh So Quiet, Björk (reprise par Ania Jamila)","p":"Ania Jamila a mandaté Chapitre 2 comme directeur photo (DOP) et caméraman pour une prestation de la chanson « Oh So Quiet » de Björk.","c":""},"en":{"t":"Oh So Quiet, Björk (Cover by Ania Jamila)","p":"Ania Jamila mandated Chapitre 2 to be DOP and camera operator for a cover performance for La Voix IV.","c":""}},{"slug":"photography-training-workshop","cats":["corpo","training","events"],"client":"MADI Photography","clientEn":"MADI Photography","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"272655631","h":"b722b7965d","img":"https://i.vimeocdn.com/video/704262209_1280.jpg"},"fr":{"t":"Atelier de formation à la photographie","p":"MADI Photography a mandaté Chapitre 2 pour le tournage et le montage d'un atelier de photographie tenu à Montréal.","c":"MADI Photography cherche à promouvoir ses services de formation à la photographie."},"en":{"t":"Photography Training Workshop","p":"MADI Photography mandated Chapitre 2 to film and edit together a photography workshop held in Montreal.","c":"MADI Photography seeks to promote its photography training services"}},{"slug":"joseph-ribkoff-denim-2018-product-reveal","cats":["corpo"],"client":"Boutique 1ère Avenue","clientEn":"Boutique 1ère Avenue","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"252071284","h":"3d80b63f4a","img":"https://i.vimeocdn.com/video/679222285_1280.jpg"},"fr":{"t":"Lancement de la collection Denim de Joseph Ribkoff","p":"Boutique 1ère Avenue a mandaté Chapitre 2 pour le tournage et le montage d'une vidéo de lancement de produit.","c":"Boutique 1ère Avenue, un détaillant en ligne de mode féminine, propose une nouvelle ligne denim de la collection Joseph Ribkoff."},"en":{"t":"Joseph Ribkoff Denim 2018 Product Reveal","p":"Boutique 1ère Avenue mandated Chapitre 2 in filming and creating a video for a new denim product launch from Joseph Ribkoff.","c":"Boutique 1ère Avenue, an online women fashion retail shop features a new line of demin from Joseph Ribkoff."}},{"slug":"nova-asa-video-explainer","cats":["corpo","motion"],"client":"EXFO","clientEn":"EXFO","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"390762871","h":null,"img":"https://i.vimeocdn.com/video/914449238_1280.jpg"},"fr":{"t":"Vidéo explicative de NOVA A|SA","p":"EXFO a mandaté Chapitre 2 pour la création et le montage d'une vidéo explicative en motion design pour le lancement de son nouveau service NOVA A|SA.","c":"Comment Nova Adaptive Service Assurance (A|SA) d'EXFO, la première plateforme d'automatisation centrée sur l'assurance de services, donne rapidement aux opérateurs les bonnes données au bon moment pour détecter, diagnostiquer et résoudre les événements ayant un impact sur les clients."},"en":{"t":"NOVA A|SA video explainer","p":"EXFO mandated Chapitre 2 in showcasing using motion graphics Nova SensAI, one of their innovative automation tool.","c":"EXFO’s E2E automation story; how EXFO’s Nova Adaptive Service Assurance (A|SA)—the industry’s first service assurance-centric automation platform quickly gives operators the right data at the right time to detect, diagnose and resolve customer-impacting events originating from communications network infrastructure and services."}},{"slug":"1ere-avenues-fashion-files","cats":["corpo","web"],"client":"Boutique 1ère Avenue","clientEn":"Boutique 1ère Avenue","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"346934989","h":null,"img":"https://i.vimeocdn.com/video/798826274_1280.jpg"},"fr":{"t":"1ère Avenue's Fashion Files","p":"Filmer et monter une websérie présentant les dernières tendances de la collection Joseph Ribkoff.","c":"Boutique 1ère Avenue et Lisa Chang présentent les dernières tendances saisonnières de la collection Joseph Ribkoff."},"en":{"t":"1ère Avenue's Fashion Files","p":"Film and edit a web series showcasing the latest trends from Joseph Ribkoff.","c":"Boutique 1ère Avenue and Lisa Chang showcase the latest seasonal trends from the Joseph Ribkoff line."}},{"slug":"we-just-keep-going","cats":["corpo","motion","doc","web","stock"],"client":"WERK Promotions","clientEn":"","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"447605250","h":null,"img":"https://i.vimeocdn.com/video/953332165_1280.jpg"},"fr":{"t":"We Just Keep Going","p":"En collaboration avec WERK Promotions, Chapitre 2 a documenté les pivots positifs de trois propriétaires de petites entreprises à Montréal.","c":"Une histoire inspirante sur la façon dont ils ont réinventé leur entreprise pendant la pandémie."},"en":{"t":"We Just Keep Going","p":"","c":"In collaboration with WERK Promotions, Chapitre 2 documented the positive pivots of three small business owners. An inspiring story about how they reinvented themselves and their business during the pandemic."}},{"slug":"david-suzuki-x-cascades","cats":["corpo","events"],"client":"Cascades","clientEn":"Cascades","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"377873454","h":null,"img":"https://i.vimeocdn.com/video/903224421_1280.jpg"},"fr":{"t":"David Suzuki x Cascades","p":"Cascades a mandaté Chapitre 2 pour le tournage et le montage d'une série de vidéos mettant en lumière les réflexions de David Suzuki et Mario Plourde (PDG de Cascades) sur l'impact environnemental de nos habitudes de consommation.","c":"Cascades a accueilli David Suzuki dans son centre de tri d'Ottawa pour une session éducative sur la récupération, le recyclage et les changements climatiques."},"en":{"t":"David Suzuki x Cascades","p":"Cascades mandated Chapitre 2 in filming and editing a series of videos highlighting reflections made by David Suzuki and Mario Plourde (CEO of Cascades) on the environmental impact of our consumption habits.","c":"Cascades hosted David Suzuki at their Ottawa sorting centre for an educational session on recovery, recycling and climate change."}},{"slug":"tricentris-x-cascades","cats":["corpo"],"client":"Cascades","clientEn":"Cascades","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"216023816","h":"ae9287fa0a","img":"https://i.vimeocdn.com/video/632907231_1280.jpg"},"fr":{"t":"Tricentris x Cascades","p":"Cascades a mandaté Chapitre 2 pour le tournage et le montage d'entrevues de Tricentris et Cascades.","c":"Dans le cadre de sa réunion annuelle des ventes, Cascades met en évidence des témoignages de succès clients."},"en":{"t":"Tricentris x Cascades","p":"Cascades mandated Chapitre 2 in filming and editing interviews from Tricentris and Cascades.","c":"As part of their annual sales meeting, Cascades needed to highlight a series of customer sucess stories."}},{"slug":"cascades-capsule-employes","cats":["corpo"],"client":"Cascades","clientEn":"Cascades","dir":"Patrick Saad","prod":"Chapitre 2 Productions","v":{"t":"vimeo","id":"204069324","h":"153d80db02","img":"https://i.vimeocdn.com/video/618496409_1280.jpg"},"fr":{"t":"Cascades – Capsule employés","p":"Cascades a mandaté Chapitre 2 pour le tournage et le montage d'une entrevue avec 5 employés.","c":"Dans le cadre de leur réunion annuelle des ventes, des employés de Cascades de différents services et divisions se rencontrent pour la première fois pour parler de la compagnie."},"en":{"t":"Cascades - Capsule Employés","p":"Cascades mandated Chapitre 2 in filming and editing an interview of 5 Cascades employees.","c":"As part of their annual sales meeting, Cascades employees from different departments and divisions meet for the first time to talk about the company. Video highlighting the individual views of 5 Cascades employees towards the company and its values."}}],"clips":{"marie-josee-bergeron-je-suis-artiste-visuelle":"/assets/videos/clip-mjb.mp4","kinova-gen3-robotic-arm-product-teaser":"/assets/videos/clip-kinova.mp4","courto":"/assets/videos/clip-courto.mp4"},"reel":{"fr":{"id":"527768774"},"en":{"id":"523837134"}},"bts":{"fr":{"id":"525263523"},"en":{"id":"501028296"}},"cats":{"all":{"fr":"Tout","en":"All"},"corpo":{"fr":"Pubs et communication corporate","en":"Ads & corporate communication"},"motion":{"fr":"Motion design","en":"Motion design"},"training":{"fr":"Formation","en":"Training"},"events":{"fr":"Événements","en":"Events"},"music":{"fr":"Clips musicaux","en":"Music videos"},"doc":{"fr":"Court-documentaire","en":"Short-doc"},"web":{"fr":"Épisode web","en":"Web episode"},"stock":{"fr":"Vidéo stock","en":"Stock footage"}},"i18n":{"fr":{"nav_home":"Accueil","nav_work":"Réalisations","nav_approach":"Approche","nav_about":"À propos","nav_contact":"Contact","hero_reel":"Démo Reel","hero_cta":"Voir nos réalisations","hero_words":[["Émotions","Partagées"],["Histoires","Racontées"],["Expériences","Vécues"]],"man_1":"Nous donnons vie à des histoires qui impactent, influencent et ont le pouvoir de convaincre. Nous ne le faisons pas <em class=\"hl\">pour<\/em> votre marque ou <em class=\"hl\">pour<\/em> votre entreprise.","man_2":"Nous le faisons <em class=\"hl\">pour<\/em> vos audiences, en plongeant au cœur de votre ADN et de vos besoins. Une petite différence, qui change tout.","work_eyebrow":"Portfolio","work_t1":"Nos","work_t2":"réalisations","work_watch":"Visionnez","work_more":"Voir plus de réalisations","work_less":"Voir moins","ext_label":"Visiter la page","app_eyebrow":"DES HISTOIRES AUX ÉMOTIONS. DE L’IDÉE À L’ENGAGEMENT.","app_title":"Les résultats tangibles et l’impact ne sont pas les fruits du hasard. Découvrez notre approche.","s1t":"Des idées aux histoires.","s1a":"Nous croyons que comprendre <b><i>pourquoi<\/i><\/b>, c’est déjà savoir <b><i>comment<\/i><\/b>. Derrière chaque communication, il y a une idée à propulser, une histoire à révéler, une émotion à générer.","s1b":"Alors nous vous guidons dans ce processus stratégique et apportons notre savoir-faire créatif pour façonner des histoires fortes, architecturer et conceptualiser les contenus.","s2t":"Des histoires aux images.","s2a":"Une histoire se sublime, et il existe 1000 techniques pour le faire.","s2b":"Grâce à notre expérience en scénarisation, en tournage, en motion design et en postproduction, nous travaillons la réalisation pour lui donner vie.","s3t":"Des images aux émotions.","s3a":"C’est par l’émotion que s’active la raison. C’est là tout l’enjeu et, avouons-le, tout le fun de notre métier.","s3b":"Convaincre, engager, éduquer, promouvoir, sont des objectifs rationnels que nous poursuivons en activant le spectre d’émotions que nous souhaitons générer, et que nous aurons pris soin de définir au préalable.","s4t":"Des émotions à l’engagement.","s4a":"Votre public veut faire l’expérience de votre marque. Et il veut le faire dans le bon contexte pour lui, au bon moment pour lui, sur la bonne plateforme… pour lui. Facile non ?","s4b":"Pour cela, nous collaborons dès le départ avec les équipes média pour penser la médiatisation et définir les stratégies publicitaires, organiques ou d’influence les plus pertinentes.","li_1":"Vous envoyer une soumission sans vous avoir écouté, ce n’est pas notre style.","li_2":"Par contre, comprendre vos besoins, vos objectifs et la raison d’être de votre projet, c’est avec ça que tout commence.","li_cta":"Planifier une rencontre","cl_title":"Ils nous font confiance","cl_sub":"Nous collaborons avec des entreprises en avance sur leur temps, parce qu’elles pensent et voient différemment la création de contenus et la connexion avec leurs publics.","q_text":"Votre marque est une somme d’histoires en mouvement qui méritent d’être révélées. Notre job ? En saisir l’essence, pour les sublimer et leur donner du sens à votre public.","q_role":"Réalisateur fondateur","ab1_t":"Nous sommes<br>Chapitre 2","ab1_p1":"Pour capturer et révéler l’essence de votre marque, de vos produits et services, et en créer des contenus engageants, nous nous sommes affranchis du modèle audiovisuel traditionnel.","ab1_p2":"Alors de la stratégie de contenu jusqu’aux derniers détails de production, de l’idéation au storytelling, nos stratèges, créatifs et réalisateurs vous accompagnent avec passion et agilité.","ab2_t":"Derrière<br>l’objectif","ab2_p1":"Quand Patrick Saad a commencé sa carrière en production et réalisation, il a eu l’occasion de créer <a href=\"http://www.fabulafilms.com/index-fr.php\" target=\"_blank\" rel=\"noopener\">Fabula Films<\/a>, une maison de production principalement dédiée à la conception et la production de films de mariage. En les pensant de manière cinématographique, et en y ajoutant l’art du récit, Fabula Films a véritablement transformé et rehaussé ces productions bien spécifiques, ce qui a fait le succès de ce premier chapitre.","ab2_p2":"Le désir d’apporter cette science du storytelling auprès des marques et des entreprises qui ont des histoires porteuses de sens à partager l’a naturellement poussé à créer Chapitre 2, pour que les marques puissent se connecter à leurs publics avec des histoires fortes, génératrices de conversation et d’impact.","bts_t":"La réalisation selon Patrick","bts_sub":"// un regard dans les coulisses","te_1":"Une histoire à partager ?","te_2":"On vous écoute.","co_1":"Faisons","co_2":"connaissance.","f_name":"Nom :","f_co":"Nom de votre entreprise :","f_web":"Site web :","f_tel":"Téléphone :","f_mail":"Adresse courriel :","f_msg":"Message :","f_send":"Envoyer","f_sent":"Courriel envoyé. Merci à vous, nous vous contacterons rapidement.","p_mandate":"Projet","p_context":"Contexte","p_prod":"Boîte de production","p_dir":"Réalisation","title":"Les Productions Chapitre 2 | Production vidéo à Montréal"},"en":{"nav_home":"Home","nav_work":"Our films","nav_approach":"Approach","nav_about":"About","nav_contact":"Contact","hero_reel":"Watch Reel","hero_cta":"See our films","hero_words":[["Shared","Emotions"],["Stories","Told"],["Experiences","Lived"]],"man_1":"We use storytelling to impact, influence, and convince. We don’t do it <em class=\"hl\">for<\/em> your brand or <em class=\"hl\">for<\/em> your company.","man_2":"We deep dive into your DNA and needs, then we do it <em class=\"hl\">for<\/em> your audiences. A small difference, that changes everything.","work_eyebrow":"Portfolio","work_t1":"Our","work_t2":"films","work_watch":"Watch now","work_more":"Show more films","work_less":"Show less","ext_label":"Visit page","app_eyebrow":"FROM STORIES TO EMOTIONS. FROM IDEAS TO ENGAGEMENT.","app_title":"Effective results and impact don’t appear by chance. Discover our approach.","s1t":"From ideas to stories.","s1a":"We believe that understanding <b><i>why<\/i><\/b> is already knowing <b><i>how<\/i><\/b>. Behind each communication project, there is an idea to share, a story to tell, an emotion to inspire.","s1b":"So we guide you through this strategic process, and we bring our creative know-how to shape the story, conceptualize and architecture the content that will be produced.","s2t":"From stories to visuals.","s2a":"There are 1000 ways to tell a story and make it shine.","s2b":"Our experience in scriptwriting, filming, motion design and postproduction brings your story to life with your brand’s unique taste.","s3t":"From visuals to emotions.","s3a":"We believe rational thinking and behavioral changes are triggered by emotional connections. This is the tricky part but also, let’s admit it, the fun part of our job.","s3b":"Convincing, engaging, educating, promoting are rational objectives that we pursue by activating the emotion spectrum that we want your audiences to feel.","s4t":"From emotions to engagement.","s4a":"Your audience wants to experience your brand. And they want to do it at the right moment for them, in the right context for them, and on the right platform… for them. Easy right?","s4b":"To achieve that, we collaborate from the start with media agencies to define the most relevant ad, organic or influence strategies.","li_1":"Sending a quote without listening to what you have to say… not really our style.","li_2":"However, understanding your needs, goals and the raison d’être behind your project… this is where it all begins.","li_cta":"Book a consultation","cl_title":"Who we work with","cl_sub":"We collaborate with forward-thinking businesses that want alternative solutions to traditional agency offerings.","q_text":"Your business has a story worth watching. It’s our job to help you see this, so that others can see it too.","q_role":"Founding filmmaker","ab1_t":"This is<br>Chapitre 2","ab1_p1":"This is where things get real. This is where businesses and brands evolve out of the traditional video production model to create authentic content that people want to watch.","ab1_p2":"The true, transparent, unscripted highlights of any story are the secret ingredients for insatiable content. When you invite us into your world, we capture these highlights by experiencing them firsthand.","ab2_t":"Behind<br>the lens","ab2_p1":"When Patrick Saad started producing films, he focused primarily on bringing the art of cinematic storytelling to the wedding industry, creating <a href=\"http://www.fabulafilms.com/\" target=\"_blank\" rel=\"noopener\">Fabula Films<\/a>, a successful film company in Montreal that produces documentary-style wedding films.","ab2_p2":"Chapitre 2 Productions is the next phase of what Patrick and his team set out to do as filmmakers — to give people the means to make their truth visible. Our mission is to help brands let their audiences in. Relatable, believable brand stories spark real, meaningful conversations.","bts_t":"Directing according to Patrick","bts_sub":"// a behind the scenes look","te_1":"What’s your story?","te_2":"We’re listening.","co_1":"Get","co_2":"in touch.","f_name":"Name:","f_co":"Company name:","f_web":"Website URL:","f_tel":"Telephone:","f_mail":"Email:","f_msg":"Message:","f_send":"Send","f_sent":"Email sent. Thank you — we’ll get back to you shortly.","p_mandate":"Mandate","p_context":"Context","p_prod":"Production company","p_dir":"Director","title":"Chapitre 2 Productions | Video production in Montreal"}}}</script>
+<script>
+/* ==================== DATA (loaded from the #c2-content JSON block above) ==================== */
+const CONTENT = JSON.parse(document.getElementById('c2-content').textContent);
+const PROJECTS = CONTENT.projects, CLIPS = CONTENT.clips, REEL = CONTENT.reel,
+      BTSV = CONTENT.bts, CATS = CONTENT.cats, I18N = CONTENT.i18n;
+
+/* ==================== STATE ==================== */
+let LANG='fr'; try{ LANG = localStorage.getItem('c2lang') || (new URLSearchParams(location.search).get('lang')==='en'?'en':'fr'); }catch(e){}
+if(!I18N[LANG]) LANG='fr';
+let FILTER = 'all';
+let heroTimer = null;
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+/* ==================== I18N ==================== */
+function applyLang(){
+  const t = I18N[LANG];
+  document.documentElement.lang = LANG;
+  document.title = t.title;
+  $$('[data-i18n]').forEach(el=>{ const k=el.dataset.i18n; if(t[k]!==undefined) el.textContent=t[k]; });
+  $$('[data-i18n-html]').forEach(el=>{ const k=el.dataset.i18nHtml; if(t[k]!==undefined) el.innerHTML=t[k]; });
+  $('#langBtn').textContent = LANG==='fr'?'EN':'FR';
+  const bi = $('#btsImg'); bi.src = PLACEHOLDER;
+  resolveVimeoThumb(BTSV[LANG].id, BTSV[LANG].h, u=>{ bi.src = u; });
+  buildFilters(); buildGrid(); startHeroWords();
+}
+$('#langBtn').addEventListener('click',()=>{ LANG = LANG==='fr'?'en':'fr'; try{ localStorage.setItem('c2lang',LANG); }catch(e){} applyLang(); });
+
+/* ==================== HERO WORDS ==================== */
+function startHeroWords(){
+  const box = $('#heroWords'); clearInterval(heroTimer);
+  const words = I18N[LANG].hero_words; let i=0;
+  const show = ()=>{ const [a,b]=words[i];
+    box.innerHTML = `<span class="w1 hw">${a}</span><span class="w2 hw b">${b}</span>`; i=(i+1)%words.length; };
+  show(); heroTimer = setInterval(show, 4200);
+}
+
+/* ==================== WORK GRID ==================== */
+function buildFilters(){
+  const box = $('#filters'); box.innerHTML='';
+  Object.keys(CATS).forEach(k=>{
+    const b=document.createElement('button');
+    b.className='chip'+(k===FILTER?' on':''); b.textContent=CATS[k][LANG];
+    b.onclick=()=>{ FILTER=k; SHOWN=PAGE; buildFilters(); buildGrid(); };
+    box.appendChild(b);
+  });
+}
+/* Thumbnails: Vimeo's legacy CDN URLs now return a striped placeholder, so we
+   resolve the current official thumbnail through Vimeo's oEmbed API and cache it. */
+const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="10"><rect width="16" height="10" fill="%231c1c1c"/></svg>'.replace(/%23/g,'#'));
+const thumbCache = (()=>{ try{ return JSON.parse(localStorage.getItem('c2thumbs')||'{}'); }catch(e){ return {}; } })();
+function saveThumbCache(){ try{ localStorage.setItem('c2thumbs', JSON.stringify(thumbCache)); }catch(e){} }
+function resolveVimeoThumb(id, h, cb){
+  const key = id;
+  if(thumbCache[key]) return cb(thumbCache[key]);
+  const url = 'https://vimeo.com/' + id + (h ? '/' + h : '');
+  fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent(url) + '&width=960')
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(d=>{ if(d.thumbnail_url){ const u=d.thumbnail_url.replace(/_[\dx]+(\.\w+)?$/,'_1280'); thumbCache[key]=u; saveThumbCache(); cb(u); } })
+    .catch(()=>{ cb('https://vumbnail.com/' + id + '.jpg'); });
+}
+function setThumb(img, v){
+  if(v.t==='ext'){ img.src = v.img || PLACEHOLDER; return; }
+  if(v.t==='youtube'){ img.src = 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg'; return; }
+  if(v.img && v.img.includes('-d_')){ img.src = v.img; return; } /* modern signed URL: still valid */
+  img.src = PLACEHOLDER;
+  resolveVimeoThumb(v.id, v.h, u=>{ img.src = u; });
+}
+const PAGE = 6;
+let SHOWN = PAGE;
+function buildGrid(){
+  const grid = $('#grid'); grid.innerHTML='';
+  const list = PROJECTS.filter(p=>FILTER==='all'||p.cats.includes(FILTER));
+  list.slice(0, SHOWN).forEach((p,idx)=>{
+    const c=document.createElement('article');
+    const feat = FILTER==='all' && idx===0;
+    c.className='card rv'+(feat?' feat':'');
+    const clip = CLIPS[p.slug];
+    const isExt = p.v.t==='ext';
+    const actionLabel = isExt ? I18N[LANG].ext_label+' ↗' : I18N[LANG].work_watch;
+    c.innerHTML = `<img class="th" loading="lazy" alt="${p[LANG].t}">
+      ${clip?`<video class="cl" muted loop playsinline preload="none" src="${clip}"></video>`:''}
+      <div class="meta"><span class="cl-name">${p.client||''}</span><h3>${p[LANG].t}</h3>
+      <span class="watch">${isExt?'':'<svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'}${actionLabel}</span></div>`;
+    setThumb(c.querySelector('img.th'), p.v);
+    const go = ()=> isExt ? window.open(p.v.url,'_blank','noopener') : openProject(p.slug);
+    c.onclick=go;
+    c.tabIndex=0; c.setAttribute('role','button');
+    c.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();go();} };
+    if(clip){ c.addEventListener('mouseenter',()=>{const v=c.querySelector('video.cl'); v&&v.play().catch(()=>{});});
+              c.addEventListener('mouseleave',()=>{const v=c.querySelector('video.cl'); v&&v.pause();}); }
+    grid.appendChild(c);
+  });
+  const mw = $('#moreWrap'); if(!mw){ observeReveals(); return; } mw.innerHTML='';
+  if(list.length > PAGE){
+    const b=document.createElement('button'); b.className='btn';
+    if(SHOWN < list.length){
+      b.textContent = I18N[LANG].work_more + ' (' + (list.length - SHOWN) + ')';
+      b.onclick = ()=>{ SHOWN = list.length; buildGrid(); };
+    }else{
+      b.textContent = I18N[LANG].work_less;
+      b.onclick = ()=>{ SHOWN = PAGE; buildGrid(); $('#work').scrollIntoView({behavior:'smooth'}); };
+    }
+    mw.appendChild(b);
+  }
+  observeReveals();
+}
+
+/* ==================== OVERLAYS ==================== */
+function embedHTML(v, autoplay=true){
+  if(v.t==='youtube') return `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0${autoplay?'&autoplay=1':''}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="video"></iframe>`;
+  const h = v.h?`h=${v.h}&`:'';
+  return `<iframe src="https://player.vimeo.com/video/${v.id}?${h}${autoplay?'autoplay=1&':''}title=0&byline=0&portrait=0&color=FFC60B" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="video"></iframe>`;
+}
+function lock(on){ document.body.classList.toggle('locked',on); }
+function openOvl(id){ $(id).classList.add('open'); lock(true); }
+function closeOvl(el){ el.classList.remove('open'); el.querySelectorAll('.player').forEach(p=>p.innerHTML=''); lock(false);
+  if(el.id==='projOvl' && location.hash.startsWith('#p/')) try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+$$('.ovl .close').forEach(b=>b.onclick=()=>closeOvl(b.closest('.ovl')));
+$$('.ovl').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o) closeOvl(o); }));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') $$('.ovl.open').forEach(closeOvl);
+  if($('#projOvl').classList.contains('open')){ if(e.key==='ArrowRight') stepProject(1); if(e.key==='ArrowLeft') stepProject(-1);} });
+
+let curIdx = -1;
+function openProject(slug, push=true){
+  const idx = PROJECTS.findIndex(p=>p.slug===slug); if(idx<0) return;
+  curIdx = idx; const p = PROJECTS[idx]; const t = I18N[LANG];
+  $('#projPlayer').innerHTML = embedHTML(p.v);
+  $('#pTitle').textContent = p[LANG].t;
+  $('#pClient').textContent = p.client||'';
+  $('#pMandate').textContent = p[LANG].p || '—';
+  $('#pCtxWrap').style.display = p[LANG].c ? '' : 'none';
+  $('#pContext').textContent = p[LANG].c;
+  $('#pProd').textContent = p.prod;
+  $('#pDir').textContent = p.dir;
+  $('#pTags').innerHTML = p.cats.map(c=>`<span>${CATS[c][LANG]}</span>`).join('');
+  openOvl('#projOvl');
+  $('#projOvl').scrollTop = 0;
+  if(push) try{ history.replaceState(null,'','#p/'+slug); }catch(e){}
+}
+function stepProject(d){
+  const list = PROJECTS.filter(p=>(FILTER==='all'||p.cats.includes(FILTER)) && p.v.t!=='ext');
+  const cur = PROJECTS[curIdx];
+  let i = list.findIndex(p=>p.slug===cur.slug);
+  i = (i+d+list.length)%list.length;
+  openProject(list[i].slug);
+}
+$('#prevP').onclick=()=>stepProject(-1);
+$('#nextP').onclick=()=>stepProject(1);
+
+$('#reelBtn').onclick=()=>{ $('#reelPlayer').innerHTML=embedHTML({t:'vimeo',...REEL[LANG]}); openOvl('#reelOvl'); };
+const btsOpen=()=>{ $('#btsPlayer').innerHTML=embedHTML({t:'vimeo',...BTSV[LANG]}); openOvl('#btsOvl'); };
+$('#btsBtn').onclick=btsOpen;
+$('#btsBtn').onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();btsOpen();} };
+
+/* deep link */
+function checkHash(){ const m = location.hash.match(/^#p\/([\w().-]+)/); if(m) openProject(m[1], false); }
+window.addEventListener('hashchange',checkHash);
+
+/* ==================== NAV ==================== */
+const nav=$('#nav');
+addEventListener('scroll',()=>{ nav.classList.toggle('solid', scrollY>40); },{passive:true});
+$('#burger').onclick=()=>document.body.classList.toggle('menu-open');
+$$('#menu a').forEach(a=>a.onclick=()=>document.body.classList.remove('menu-open'));
+
+/* ==================== REVEALS ==================== */
+let io;
+function observeReveals(){
+  io = io || new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+  $$('.rv:not(.in)').forEach(el=>io.observe(el));
+}
+
+/* ==================== PARALLAX ==================== */
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){
+  const els = ()=>$$('[data-plx]');
+  let ticking=false;
+  function plx(){
+    const vh=innerHeight, mob=innerWidth<720;
+    els().forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.bottom<0||r.top>vh) return;
+      const sp=parseFloat(el.dataset.plx)*(mob?.5:1);
+      const off=(r.top+r.height/2-vh/2)*sp*-1;
+      el.style.transform=`translate3d(0,${off.toFixed(1)}px,0)`;
+    });
+    ticking=false;
+  }
+  addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(plx); ticking=true; } },{passive:true});
+  addEventListener('resize',plx); plx();
+}
+
+/* ==================== INIT ==================== */
+applyLang();
+observeReveals();
+checkHash();
+if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.display='block'; }
+</script>
+</body>
+</html>
