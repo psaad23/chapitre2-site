@@ -7,9 +7,13 @@
 <meta name="description" content="Chapitre 2 est une boîte de production vidéo à Montréal. Pubs, communication corporate, motion design, événements et courts-documentaires : des histoires créées pour vos audiences.">
 <meta property="og:title" content="Les Productions Chapitre 2">
 <meta property="og:description" content="Des histoires aux émotions. De l'idée à l'engagement. Production vidéo à Montréal.">
-<meta property="og:image" content="https://www.chapitre2.ca/assets/images/hero-poster.jpg">
+<meta property="og:image" content="https://chapitre2.ca/assets/images/hero-poster.jpg">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.chapitre2.ca/">
+<meta property="og:url" content="https://chapitre2.ca/">
+<link rel="canonical" href="https://chapitre2.ca/">
+<link rel="alternate" hreflang="fr" href="https://chapitre2.ca/">
+<link rel="alternate" hreflang="en" href="https://chapitre2.ca/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://chapitre2.ca/">
 <link rel="icon" href="/assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -413,7 +417,7 @@ body.locked{overflow:hidden}
     <form class="rv d1" action="https://formsubmit.co/info@chapitre2.ca" method="POST">
       <input type="hidden" name="_subject" value="Nouveau message — chapitre2.ca">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://www.chapitre2.ca/?sent=1#contact">
+      <input type="hidden" name="_next" value="https://chapitre2.ca/?sent=1#contact">
       <div class="cols">
         <div class="fld"><label for="f-name" data-i18n="f_name"></label><input id="f-name" name="nom" required autocomplete="name"></div>
         <div class="fld"><label for="f-co" data-i18n="f_co"></label><input id="f-co" name="entreprise" autocomplete="organization"></div>
@@ -469,7 +473,8 @@ const PROJECTS = CONTENT.projects, CLIPS = CONTENT.clips, REEL = CONTENT.reel,
       BTSV = CONTENT.bts, CATS = CONTENT.cats, I18N = CONTENT.i18n;
 
 /* ==================== STATE ==================== */
-let LANG='fr'; try{ LANG = localStorage.getItem('c2lang') || (new URLSearchParams(location.search).get('lang')==='en'?'en':'fr'); }catch(e){}
+let LANG='fr'; try{ const _lp=new URLSearchParams(location.search).get('lang');
+  LANG = (_lp==='en'||_lp==='fr') ? _lp : (localStorage.getItem('c2lang') || 'fr'); }catch(e){}
 if(!I18N[LANG]) LANG='fr';
 let FILTER = 'all';
 let heroTimer = null;
@@ -620,7 +625,24 @@ $('#btsBtn').onclick=btsOpen;
 $('#btsBtn').onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();btsOpen();} };
 
 /* deep link */
-function checkHash(){ const m = location.hash.match(/^#p\/([\w().-]+)/); if(m) openProject(m[1], false); }
+function checkHash(){
+  const m = location.hash.match(/^#p\/([\w().-]+)/);
+  if(m){ openProject(m[1], false); return; }
+  const c = location.hash.match(/^#c\/(\w+)/);
+  if(c && CATS[c[1]]){ FILTER=c[1]; SHOWN=PAGE; buildFilters(); buildGrid(); $('#work').scrollIntoView(); }
+}
+/* legacy-redirect support: ?p=<slug> opens a project, ?c=<cat> opens a filtered grid */
+function handleLegacyParams(){
+  const q = new URLSearchParams(location.search);
+  const p = q.get('p'), c = q.get('c');
+  if(p && PROJECTS.some(x=>x.slug===p)){
+    openProject(p, false);
+    try{ history.replaceState(null,'','/#p/'+p); }catch(e){}
+  } else if(c && CATS[c]){
+    FILTER=c; SHOWN=PAGE; buildFilters(); buildGrid(); $('#work').scrollIntoView();
+    try{ history.replaceState(null,'','/#c/'+c); }catch(e){}
+  }
+}
 window.addEventListener('hashchange',checkHash);
 
 /* ==================== NAV ==================== */
@@ -660,6 +682,7 @@ if(!reduced){
 applyLang();
 observeReveals();
 checkHash();
+handleLegacyParams();
 if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.display='block'; }
 </script>
 </body>

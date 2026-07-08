@@ -1,0 +1,44 @@
+# ============================================================
+# Redirections 301 — anciennes URLs Webflow → nouveau site
+# Cloudflare Pages lit ce fichier automatiquement (racine du projet).
+# Ordre important : règles précises AVANT les jokers (*).
+# Les /assets/* ne sont touchés par aucune règle.
+# ============================================================
+
+# --- Anciennes pages EN (www.chapitre2.ca) ---
+/home                    /?lang=en            301
+/home.html               /?lang=en            301
+/film                    /?lang=en&c=all      301
+/film.html               /?lang=en&c=all      301
+/film-corpo              /?lang=en&c=corpo    301
+/film-corpo.html         /?lang=en&c=corpo    301
+/film-motion-design      /?lang=en&c=motion   301
+/film-motion-design.html /?lang=en&c=motion   301
+/film-training           /?lang=en&c=training 301
+/film-training.html      /?lang=en&c=training 301
+/film-events             /?lang=en&c=events   301
+/film-events.html        /?lang=en&c=events   301
+/film-short-doc          /?lang=en&c=doc      301
+/film-short-doc.html     /?lang=en&c=doc      301
+/film-web-episode        /?lang=en&c=web      301
+/film-web-episode.html   /?lang=en&c=web      301
+/film-stock-footage      /?lang=en&c=stock    301
+/film-stock-footage.html /?lang=en&c=stock    301
+/index.html              /                    301
+
+# --- Anciennes fiches projet EN : /film/<slug> → ouverture du projet ---
+/film/*                  /?lang=en&p=:splat   301
+
+# --- Anciennes URLs FR (fr.chapitre2.ca, réécrites en /fr/... par la
+#     règle de redirection Cloudflare au niveau du domaine) ---
+/fr                      /                    301
+/fr/film                 /?c=all              301
+/fr/film-corpo           /?c=corpo            301
+/fr/film-motion-design   /?c=motion           301
+/fr/film-training        /?c=training         301
+/fr/film-events          /?c=events           301
+/fr/film-short-doc       /?c=doc              301
+/fr/film-web-episode     /?c=web              301
+/fr/film-stock-footage   /?c=stock            301
+/fr/film/*               /?p=:splat           301
+/fr/*                    /                    301
