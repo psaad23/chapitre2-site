@@ -49,8 +49,12 @@ section{position:relative}
 .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
 
 /* ============ NAV ============ */
-nav{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);transition:background .4s,padding .4s,box-shadow .4s}
-nav.solid{background:rgba(13,13,13,.92);backdrop-filter:blur(10px);padding:12px var(--pad);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+nav{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);transition:padding .4s}
+nav::before{content:"";position:absolute;inset:0;z-index:-1;background:transparent;transition:background .4s,box-shadow .4s;pointer-events:none}
+nav.solid{padding:12px var(--pad)}
+nav.solid::before{background:rgba(13,13,13,.95);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+body.menu-open{overflow:hidden}
+body.menu-open nav::before{background:rgba(13,13,13,.97)}
 nav .logo img{height:58px;width:auto;transition:height .4s}
 nav.solid .logo img{height:48px}
 nav ul{display:flex;align-items:center;gap:34px;list-style:none}
