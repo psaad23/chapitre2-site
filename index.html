@@ -217,6 +217,8 @@ form .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px}
 .fld textarea{min-height:90px;resize:vertical}
 #contact .send{margin-top:24px;text-align:right}
 #sentMsg{display:none;margin-top:18px;color:var(--yellow);font-weight:600}
+#formErr{display:none;margin-top:18px;color:#fff;background:rgba(0,0,0,.35);border-left:4px solid var(--yellow);padding:10px 14px;font-weight:500}
+form .hp{position:absolute!important;left:-10000px!important;top:auto;width:1px;height:1px;overflow:hidden}
 footer{background:var(--yellow);padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 footer small{font-size:12.5px;font-weight:500;color:var(--black)}
 footer .soc{display:flex;gap:16px}
@@ -418,10 +420,13 @@ body.locked{overflow:hidden}
         <b><a href="tel:+15145741804">514. 574. 1804</a></b>
       </div>
     </div>
-    <form class="rv d1" action="https://formsubmit.co/info@chapitre2.ca" method="POST">
+    <form id="contactForm" class="rv d1" method="POST">
       <input type="hidden" name="_subject" value="Nouveau message — chapitre2.ca">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_next" value="https://chapitre2.ca/?sent=1#contact">
+      <input type="hidden" name="_blacklist" value="viagra, cialis, casino, crypto, bitcoin, forex, backlink, backlinks, guest post, seo services, seo agency, rank your website, first page of google, loan offer, porn, escort, betting">
+      <!-- Anti-spam honeypot: hidden from humans, bots fill it in. FormSubmit discards any submission where _honey is not empty. -->
+      <div class="hp" aria-hidden="true"><label for="f-hp">Ne pas remplir / Leave empty</label><input id="f-hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
       <div class="cols">
         <div class="fld"><label for="f-name" data-i18n="f_name"></label><input id="f-name" name="nom" required autocomplete="name"></div>
         <div class="fld"><label for="f-co" data-i18n="f_co"></label><input id="f-co" name="entreprise" autocomplete="organization"></div>
@@ -432,6 +437,7 @@ body.locked{overflow:hidden}
       </div>
       <div class="send"><button type="submit" class="btn" data-i18n="f_send"></button></div>
       <p id="sentMsg" data-i18n="f_sent"></p>
+      <p id="formErr" role="alert"></p>
     </form>
   </div>
 </section>
@@ -688,6 +694,39 @@ observeReveals();
 checkHash();
 handleLegacyParams();
 if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.display='block'; }
+
+/* ==================== CONTACT FORM — ANTI-SPAM ====================
+   1. The FormSubmit address is not written in the HTML: it is assembled here
+      only when a real person submits, so bots that scrape the page find no endpoint.
+   2. Honeypot (_honey): an invisible field humans never see; bots fill it in.
+   3. Timing + interaction: a human needs a few seconds and has to type/click.
+   4. Link limit: messages stuffed with URLs are refused.
+   5. _blacklist (in the form): FormSubmit drops messages containing those words. */
+(function(){
+  const form = document.getElementById('contactForm'); if(!form) return;
+  const err = document.getElementById('formErr');
+  const t0 = Date.now(); let human = false;
+  ['keydown','pointerdown','touchstart','input'].forEach(ev =>
+    form.addEventListener(ev, () => { human = true; }, {passive:true, once:true}));
+  const MSG = {
+    fr:{ fast:"Un instant… merci de réessayer dans quelques secondes.",
+         links:"Merci de limiter votre message à 2 liens maximum." },
+    en:{ fast:"One moment… please try again in a few seconds.",
+         links:"Please keep your message to 2 links or fewer." }
+  };
+  const show = k => { err.textContent = (MSG[LANG]||MSG.fr)[k]; err.style.display='block'; };
+  form.addEventListener('submit', e => {
+    e.preventDefault(); err.style.display='none';
+    const hp = form.querySelector('[name="_honey"]');
+    if(hp && hp.value.trim()){ location.href='/?sent=1#contact'; return; }     // bot: pretend it worked
+    if(!human || Date.now()-t0 < 4000){ show('fast'); return; }
+    const txt = ['message','entreprise','nom'].map(n=>(form.elements[n]||{}).value||'').join(' ');
+    if((txt.match(/https?:\/\/|www\./gi)||[]).length > 2){ show('links'); return; }
+    form.action = ['https:','','formsubmit.co',['info','chapitre2.ca'].join('@')].join('/');
+    form.querySelector('button[type="submit"]').disabled = true;
+    form.submit();
+  });
+})();
 </script>
 </body>
 </html>
