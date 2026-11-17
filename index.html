@@ -420,19 +420,18 @@ body.locked{overflow:hidden}
         <b><a href="tel:+15145741804">514. 574. 1804</a></b>
       </div>
     </div>
-    <form id="contactForm" class="rv d1" method="POST">
-      <input type="hidden" name="_subject" value="Nouveau message — chapitre2.ca">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://chapitre2.ca/?sent=1#contact">
-      <input type="hidden" name="_blacklist" value="viagra, cialis, casino, crypto, bitcoin, forex, backlink, backlinks, guest post, seo services, seo agency, rank your website, first page of google, loan offer, porn, escort, betting">
-      <!-- Anti-spam honeypot: hidden from humans, bots fill it in. FormSubmit discards any submission where _honey is not empty. -->
-      <div class="hp" aria-hidden="true"><label for="f-hp">Ne pas remplir / Leave empty</label><input id="f-hp" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+    <form id="contactForm" class="rv d1" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="75dd7cc8-ab4e-4f1e-8204-4d973221e7b2">
+      <input type="hidden" name="subject" value="Nouveau message — chapitre2.ca">
+      <input type="hidden" name="from_name" value="Site web chapitre2.ca">
+      <!-- Anti-spam honeypots: invisible to humans. Web3Forms rejects any submission where botcheck is checked. -->
+      <div class="hp" aria-hidden="true"><label for="f-hp">Ne pas remplir / Leave empty</label><input id="f-hp" type="text" tabindex="-1" autocomplete="off"><input type="checkbox" name="botcheck" tabindex="-1"></div>
       <div class="cols">
         <div class="fld"><label for="f-name" data-i18n="f_name"></label><input id="f-name" name="nom" required autocomplete="name"></div>
         <div class="fld"><label for="f-co" data-i18n="f_co"></label><input id="f-co" name="entreprise" autocomplete="organization"></div>
         <div class="fld"><label for="f-web" data-i18n="f_web"></label><input id="f-web" name="site_web" autocomplete="url"></div>
         <div class="fld"><label for="f-tel" data-i18n="f_tel"></label><input id="f-tel" name="telephone" autocomplete="tel"></div>
-        <div class="fld full"><label for="f-mail" data-i18n="f_mail"></label><input id="f-mail" type="email" name="courriel" required autocomplete="email"></div>
+        <div class="fld full"><label for="f-mail" data-i18n="f_mail"></label><input id="f-mail" type="email" name="email" required autocomplete="email"></div>
         <div class="fld full"><label for="f-msg" data-i18n="f_msg"></label><textarea id="f-msg" name="message" required></textarea></div>
       </div>
       <div class="send"><button type="submit" class="btn" data-i18n="f_send"></button></div>
@@ -695,52 +694,51 @@ checkHash();
 handleLegacyParams();
 if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.display='block'; }
 
-/* ==================== CONTACT FORM — ANTI-SPAM ====================
-   1. The FormSubmit address is not written in the HTML: it is assembled here
-      only when a real person submits, so bots that scrape the page find no endpoint.
-   2. Honeypot (_honey): an invisible field humans never see; bots fill it in.
-   3. Timing + interaction: a human needs a few seconds and has to type/click.
-   4. Link limit: messages stuffed with URLs are refused.
-   5. _blacklist (in the form): FormSubmit drops messages containing those words. */
+/* ==================== CONTACT FORM — WEB3FORMS + ANTI-SPAM ====================
+   Sends in the background to Web3Forms (no page reload). Spam layers:
+   1. Honeypots: a hidden text field + Web3Forms' "botcheck" box; humans never see them.
+   2. Timing + interaction: a human needs a few seconds and has to type/click.
+   3. Link limit: messages stuffed with URLs are refused.
+   4. Spam words: messages containing them are silently dropped. */
 (function(){
   const form = document.getElementById('contactForm'); if(!form) return;
-  const err = document.getElementById('formErr');
+  const err = document.getElementById('formErr'), ok = document.getElementById('sentMsg');
+  const btn = form.querySelector('button[type="submit"]');
   const t0 = Date.now(); let human = false;
   ['keydown','pointerdown','touchstart','input'].forEach(ev =>
     form.addEventListener(ev, () => { human = true; }, {passive:true, once:true}));
+  const SPAM = /\b(viagra|cialis|casino|crypto|bitcoin|forex|backlinks?|guest post|seo (services|agency)|rank your website|first page of google|loan offer|porn|escort|betting)\b/i;
   const MSG = {
     fr:{ sending:"Envoi en cours…",
          fast:"Un instant… merci de réessayer dans quelques secondes.",
-         links:"Merci de limiter votre message à 2 liens maximum." },
+         links:"Merci de limiter votre message à 2 liens maximum.",
+         fail:"Le message n’a pas pu être envoyé. Réessayez ou écrivez-nous à info@chapitre2.ca." },
     en:{ sending:"Sending…",
          fast:"One moment… please try again in a few seconds.",
-         links:"Please keep your message to 2 links or fewer." }
+         links:"Please keep your message to 2 links or fewer.",
+         fail:"Your message couldn’t be sent. Please try again or email us at info@chapitre2.ca." }
   };
-  const show = k => { err.textContent = (MSG[LANG]||MSG.fr)[k]; err.style.display='block'; };
+  const T = k => (MSG[LANG]||MSG.fr)[k];
+  const show = k => { err.textContent = T(k); err.style.display='block'; };
+  const thanks = () => { form.reset(); ok.style.display='block'; ok.scrollIntoView({behavior:'smooth', block:'center'}); };
   form.addEventListener('submit', e => {
-    e.preventDefault(); err.style.display='none';
-    const hp = form.querySelector('[name="_honey"]');
-    if(hp && hp.value.trim()){ location.href='/?sent=1#contact'; return; }     // bot: pretend it worked
+    e.preventDefault(); err.style.display='none'; ok.style.display='none';
+    const v = n => ((form.elements[n]||{}).value||'');
+    if(v('f-hp') || document.getElementById('f-hp').value.trim() || form.elements.botcheck.checked){ thanks(); return; } // bot: pretend it worked
     if(!human || Date.now()-t0 < 4000){ show('fast'); return; }
-    const txt = ['message','entreprise','nom'].map(n=>(form.elements[n]||{}).value||'').join(' ');
+    const txt = [v('message'), v('entreprise'), v('nom')].join(' ');
     if((txt.match(/https?:\/\/|www\./gi)||[]).length > 2){ show('links'); return; }
-    const to = ['info','chapitre2.ca'].join('@');
-    const btn = form.querySelector('button[type="submit"]');
-    const label = btn.textContent;
-    btn.disabled = true; btn.textContent = (MSG[LANG]||MSG.fr).sending;
-    // Fallback: the classic full-page submit (used only if the quick send fails)
-    const classic = () => { form.action = 'https://formsubmit.co/' + to; form.submit(); };
-    // Quick send: stays on the page, no reload of the whole site
-    const data = {}; new FormData(form).forEach((v,k) => { data[k] = v; });
-    fetch('https://formsubmit.co/ajax/' + to, {
+    if(SPAM.test(txt)){ thanks(); return; }                                            // spam words: drop silently
+    const label = btn.textContent; btn.disabled = true; btn.textContent = T('sending');
+    const data = Object.fromEntries(new FormData(form));
+    fetch(form.action, {
       method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify(data)
     }).then(r => r.json()).then(j => {
-      if(String(j.success) !== 'true') throw new Error(j.message || 'fail');
-      form.reset(); btn.textContent = label; btn.disabled = false;
-      const ok = document.getElementById('sentMsg'); ok.style.display = 'block';
-      ok.scrollIntoView({behavior:'smooth', block:'center'});
-    }).catch(classic);
+      if(!j.success) throw new Error(j.message || 'fail');
+      thanks();
+    }).catch(() => show('fail'))
+      .finally(() => { btn.disabled = false; btn.textContent = label; });
   });
 })();
 </script>
