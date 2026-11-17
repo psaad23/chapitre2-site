@@ -709,9 +709,11 @@ if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.
   ['keydown','pointerdown','touchstart','input'].forEach(ev =>
     form.addEventListener(ev, () => { human = true; }, {passive:true, once:true}));
   const MSG = {
-    fr:{ fast:"Un instant… merci de réessayer dans quelques secondes.",
+    fr:{ sending:"Envoi en cours…",
+         fast:"Un instant… merci de réessayer dans quelques secondes.",
          links:"Merci de limiter votre message à 2 liens maximum." },
-    en:{ fast:"One moment… please try again in a few seconds.",
+    en:{ sending:"Sending…",
+         fast:"One moment… please try again in a few seconds.",
          links:"Please keep your message to 2 links or fewer." }
   };
   const show = k => { err.textContent = (MSG[LANG]||MSG.fr)[k]; err.style.display='block'; };
@@ -722,9 +724,23 @@ if(new URLSearchParams(location.search).get('sent')==='1'){ $('#sentMsg').style.
     if(!human || Date.now()-t0 < 4000){ show('fast'); return; }
     const txt = ['message','entreprise','nom'].map(n=>(form.elements[n]||{}).value||'').join(' ');
     if((txt.match(/https?:\/\/|www\./gi)||[]).length > 2){ show('links'); return; }
-    form.action = ['https:','','formsubmit.co',['info','chapitre2.ca'].join('@')].join('/');
-    form.querySelector('button[type="submit"]').disabled = true;
-    form.submit();
+    const to = ['info','chapitre2.ca'].join('@');
+    const btn = form.querySelector('button[type="submit"]');
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = (MSG[LANG]||MSG.fr).sending;
+    // Fallback: the classic full-page submit (used only if the quick send fails)
+    const classic = () => { form.action = 'https://formsubmit.co/' + to; form.submit(); };
+    // Quick send: stays on the page, no reload of the whole site
+    const data = {}; new FormData(form).forEach((v,k) => { data[k] = v; });
+    fetch('https://formsubmit.co/ajax/' + to, {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(data)
+    }).then(r => r.json()).then(j => {
+      if(String(j.success) !== 'true') throw new Error(j.message || 'fail');
+      form.reset(); btn.textContent = label; btn.disabled = false;
+      const ok = document.getElementById('sentMsg'); ok.style.display = 'block';
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+    }).catch(classic);
   });
 })();
 </script>
